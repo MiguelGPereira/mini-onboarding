@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text
+    Text,
+    TouchableOpacity
 } from 'react-native';
 
-class HelloWorld extends Component {
+class Success extends Component {
     render() {
         return (
             <View>
-                <Text>Hello World!</Text>
+                <Text>Success</Text>
             </View>
         );
     }
 }
 
-export default HelloWorld;
+export default Success;

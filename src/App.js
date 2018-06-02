@@ -19,8 +19,7 @@ class App extends Component {
   _startApp() {
     Navigation.startSingleScreenApp({
       screen: {
-        screen: 'MiniOnboarding.HelloWorld',
-        title: 'Hello World',
+        screen: 'onboarding.Landing',
       }
     })
   }
