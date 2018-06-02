@@ -57,6 +57,7 @@ class Age extends Component {
                     style={{ height: 20 }}
                     placeholder="Enter age"
                     keyboardType="numeric"
+                    maxLength = {3}
                     onChangeText={(ageInput) => this._validateInput(ageInput)}
                     value={this.state.ageInput}
                 />

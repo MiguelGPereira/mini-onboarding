@@ -29,18 +29,26 @@ class Height extends Component {
     }
 
     _didTapNext() {
-        const { heightCmsInput, heightFtInput, heightInInput, system } = this.state;
-        const height = {
-            system
-        }
+        const { 
+            heightCmsInput, 
+            heightFtInput, 
+            heightInInput, 
+            system 
+        } = this.state;
+
+        const height = { system };
 
         if (system == measureSys.METRIC) {
             height.value = heightCmsInput;
         } else {
-            height.value = toMetric(Number(heightFtInput), Number(heightInInput));
+            height.value = toMetric(
+                Number(heightFtInput), 
+                Number(heightInInput)
+            );
         }
 
         this.props.actions.setHeight(height);
+
         this.props.navigator.push({
             screen: 'onboarding.Success',
         });
@@ -51,38 +59,29 @@ class Height extends Component {
         switch (measure) {
             case 'cms':
                 validHeight = isValidMetricHeight(heightInput);
-                if (validHeight) {
-                    this.setState(
-                        { heightCmsInput: heightInput },
-                        () => this.setState({ isValid: this._validateState() })
-                    );
-                } else {
-                    this.setState({ isValid: false })
-                }
+                if (validHeight) this._updateState('heightCmsInput', heightInput);
+                else this.setState({ isValid: false });
                 break;
+
             case 'ft':
                 validHeight = isValidFeetInches(heightInput);
-                if (validHeight) {
-                    this.setState(
-                        { heightFtInput: heightInput },
-                        () => this.setState({ isValid: this._validateState() })
-                    );
-                } else {
-                    this.setState({ isValid: false })
-                }
+                if (validHeight) this._updateState('heightFtInput', heightInput);
+                else this.setState({ isValid: false });
                 break;
+
             case 'in':
                 validHeight = isValidFeetInches(heightInput);
-                if (validHeight) {
-                    this.setState(
-                        { heightInInput: heightInput },
-                        () => this.setState({ isValid: this._validateState() })
-                    );
-                } else {
-                    this.setState({ isValid: false })
-                }
+                if (validHeight) this._updateState('heightInInput', heightInput);
+                else this.setState({ isValid: false });
                 break;
         }
+    }
+
+    _updateState(key, value) {
+        this.setState(
+            { [key]: value },
+            () => this.setState({ isValid: this._validateState() })
+        );
     }
 
     _validateState() {
@@ -139,6 +138,7 @@ class Height extends Component {
                 <TextInput
                     style={{ height: 20 }}
                     placeholder="CM"
+                    maxLength = {6}
                     keyboardType="numeric"
                     onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
                     value={this.state.heightCmsInput}
@@ -151,6 +151,7 @@ class Height extends Component {
                         style={{ height: 20 }}
                         placeholder="FT"
                         keyboardType="numeric"
+                        maxLength = {5}
                         onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
                         value={this.state.heightFtInput}
                     />
@@ -158,6 +159,7 @@ class Height extends Component {
                         style={{ height: 20 }}
                         placeholder="In"
                         keyboardType="numeric"
+                        maxLength = {5}
                         onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
                         value={this.state.heightInInput}
                     />

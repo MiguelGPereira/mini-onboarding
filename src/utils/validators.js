@@ -9,7 +9,7 @@ export function isValidAge(ageStr) {
 }
 
 export function isValidMetricHeight(centimetersStr) {
-    if (_isOnlyNumbers(centimetersStr)) {
+    if (_isOnlyNumbersDecimal(centimetersStr)) {
         const centimeters = Number(centimetersStr);
         return _isInHeightInterval(centimeters);
     }
