@@ -16,23 +16,6 @@ export function isValidMetricHeight(centimetersStr) {
     return false;
 }
 
-export function ___isValidImperialHeight(feetStr, inchesStr, measureToEval) {
-    switch (measureToEval) {
-        case 'ft':
-            if (inchesStr == undefined) return false;
-            if (_isOnlyNumbersDecimal(feetStr)) {
-                const feet = Number(feetStr);
-                const inches = Number(inchesStr);
-                const centimeters = toMetric(feet, inches);
-                return _isInHeightInterval(centimeters);
-            }
-            break;
-        case 'in':
-            if (feetStr == undefined) return false;
-            break;
-    }
-}
-
 export function isValidFeetInches(value) {
     return _isOnlyNumbersDecimal(value);
 }
