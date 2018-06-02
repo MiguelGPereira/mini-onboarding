@@ -6,15 +6,21 @@ import {
 } from 'react-native';
 
 import withOnboarding from './hocs/withOnboarding';
+import { toMeasureDisplayFormat, toTitleAllCapitalFormat } from './../../utils/formatters';
 
 class Success extends Component {
     render() {
-        window.props = this.props;
+        
+        const { goal, age, height } = this.props.onboarding;
+
+        const goalRender = toTitleAllCapitalFormat(goal);
+        const heightRender = toMeasureDisplayFormat(height)
+
         return (
             <View>
-                <Text>goal: {this.props.onboarding.goal}</Text>
-                <Text>age: {this.props.onboarding.age}</Text>
-                <Text>height: {this.props.onboarding.height.value}</Text>
+                <Text>goal: {goalRender}</Text>
+                <Text>age: {age}</Text>
+                <Text>height: {heightRender}</Text>
             </View>
         );
     }

@@ -14,12 +14,9 @@ export function setAge(age) {
     }
 }
 
-export function setHeight(height, measurementSystem) {
+export function setHeight(height) {
     return {
         type: actionTypes.SET_HEIGHT,
-        payload: {
-            value: height,
-            system: measurementSystem
-        }
+        payload: height
     }
 }
