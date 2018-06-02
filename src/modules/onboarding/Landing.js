@@ -7,6 +7,7 @@ import {
 
 import withOnboarding from './hocs/withOnboarding';
 import * as fitnessGoals from './../../constants/fitnessGoals';
+import { toTitleFormat } from './../../utils/formatters';
 
 class Landing extends Component {
     _didTapGoal(goal) {
@@ -19,6 +20,7 @@ class Landing extends Component {
     render() {
         const renderedItems = Object.keys(fitnessGoals).map(goal => 
             <TouchableOpacity key={goal} onPress={() => this._didTapGoal(goal)}>
+                <Text>{toTitleFormat(goal)}</Text>
                 <Text>{fitnessGoals[goal].description}</Text>
             </TouchableOpacity>
         );

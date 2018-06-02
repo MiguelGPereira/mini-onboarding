@@ -6,6 +6,7 @@ import {
     TextInput
 } from 'react-native';
 
+import { isValidAge } from './../../utils/validators';
 import withOnboarding from './hocs/withOnboarding';
 
 class Age extends Component {
@@ -13,7 +14,8 @@ class Age extends Component {
         super(props);
 
         this.state = {
-            ageInput: undefined
+            ageInput: undefined,
+            isValid: false
         }
     }
 
@@ -24,7 +26,30 @@ class Age extends Component {
         });
     }
 
+    _validateInput(ageInput) {
+        if (isValidAge(ageInput)) {
+            this.setState({
+                ageInput: ageInput,
+                isValid: true
+            })
+        } else {
+            this.setState({ isValid: false })
+        }
+    }
+
     render() {
+
+        let nextButton = (
+            <TouchableOpacity onPress={() => this._didTapNext()}>
+                <Text>next</Text>
+            </TouchableOpacity>
+        );
+        if (!this.state.isValid) {
+            nextButton = (
+                <Text>enter valid input</Text>
+            );
+        }
+
         return (
             <View>
                 <Text>Select age</Text>
@@ -32,12 +57,10 @@ class Age extends Component {
                     style={{ height: 20 }}
                     placeholder="Enter age"
                     keyboardType="numeric"
-                    onChangeText={(ageInput) => this.setState({ageInput: ageInput})}
-                    value = {this.state.ageInput}
+                    onChangeText={(ageInput) => this._validateInput(ageInput)}
+                    value={this.state.ageInput}
                 />
-                <TouchableOpacity onPress={() => this._didTapNext()}>
-                    <Text>next</Text>
-                </TouchableOpacity>
+                {nextButton}
             </View>
         );
     }

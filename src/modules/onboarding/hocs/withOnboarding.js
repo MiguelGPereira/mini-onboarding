@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {
     compose,
     bindActionCreators
-} from "redux";
-import { connect } from "react-redux";
+} from 'redux';
+import { connect } from 'react-redux';
 
 import * as actions from './../onboarding.actions';
 
