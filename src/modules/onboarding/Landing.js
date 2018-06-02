@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Image,
+    ScrollView,
 } from 'react-native';
 
+import styles from './styles/Landing';
 import withOnboarding from './hocs/withOnboarding';
 import * as fitnessGoals from './../../constants/fitnessGoals';
 import { toTitleFormat } from './../../utils/formatters';
+import Goal from './components/Goal';
 
 class Landing extends Component {
     _didTapGoal(goal) {
@@ -18,17 +22,34 @@ class Landing extends Component {
     }
 
     render() {
-        const renderedItems = Object.keys(fitnessGoals).map(goal => 
-            <TouchableOpacity key={goal} onPress={() => this._didTapGoal(goal)}>
-                <Text>{toTitleFormat(goal)}</Text>
-                <Text>{fitnessGoals[goal].description}</Text>
-            </TouchableOpacity>
+        const renderedItems = Object.keys(fitnessGoals).map(goal =>
+            <Goal
+                key={goal}
+                goal={goal}
+                title={toTitleFormat(goal)}
+                description={fitnessGoals[goal].description}
+                _didTapGoal={this._didTapGoal.bind(this)}
+             />
         );
 
         return (
-            <View>
-                <Text>Select goal</Text>
-                { renderedItems }
+            <View style={styles.container}>
+                <Image style={styles.background} source={require('./../../../assets/backgroundGrain.png')} />
+                <View style={styles.leftBg}>
+                    <Image source={require('./../../../assets/imgBeans.png')} />
+                </View>
+                <View style={styles.rightBg}>
+                    <Image style={styles.dumbbell} source={require('./../../../assets/imgDumbbell.png')} />
+                    <Image source={require('./../../../assets/imgMat.png')} />
+                </View>
+                
+                
+                <Image style={styles.logo} source={require('./../../../assets/icon8Logo.png')} />
+                <Text style={styles.logoLabel}>WELCOME TO 8FIT</Text>
+                <Text style={styles.title}>What's your goal?</Text>
+                <ScrollView style={styles.scrollView}>
+                    {renderedItems}
+                </ScrollView>
             </View>
         );
     }

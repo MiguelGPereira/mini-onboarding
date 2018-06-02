@@ -20,6 +20,9 @@ class App extends Component {
     Navigation.startSingleScreenApp({
       screen: {
         screen: 'onboarding.Landing',
+        navigatorStyle: {
+          navBarHidden: true
+        }
       }
     })
   }
