@@ -5,10 +5,12 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import withOnboarding from './hocs/withOnboarding';
 import * as fitnessGoals from './../../constants/fitnessGoals';
 
 class Landing extends Component {
     _didTapGoal(goal) {
+        this.props.actions.setGoal(goal);
         this.props.navigator.push({
             screen: 'onboarding.Age',
         });
@@ -30,4 +32,4 @@ class Landing extends Component {
     }
 }
 
-export default Landing;
+export default withOnboarding(Landing);

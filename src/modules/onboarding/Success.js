@@ -5,14 +5,19 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import withOnboarding from './hocs/withOnboarding';
+
 class Success extends Component {
     render() {
+        window.props = this.props;
         return (
             <View>
-                <Text>Success</Text>
+                <Text>goal: {this.props.onboarding.goal}</Text>
+                <Text>age: {this.props.onboarding.age}</Text>
+                <Text>height: {this.props.onboarding.height.value}</Text>
             </View>
         );
     }
 }
 
-export default Success;
+export default withOnboarding(Success);

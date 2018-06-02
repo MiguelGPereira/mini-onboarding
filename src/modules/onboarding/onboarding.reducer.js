@@ -2,7 +2,7 @@ import initialState from './../../store/initialState';
 import * as actionTypes from './../../constants/actionTypes';
 
 export default function (state = initialState.onboarding, action) {
-    switch (actionTypes) {
+    switch (action.type) {
         case actionTypes.SET_GOAL:
             return {
                 ...state,

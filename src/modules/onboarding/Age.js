@@ -6,6 +6,8 @@ import {
     TextInput
 } from 'react-native';
 
+import withOnboarding from './hocs/withOnboarding';
+
 class Age extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +18,7 @@ class Age extends Component {
     }
 
     _didTapNext() {
+        this.props.actions.setAge(this.state.ageInput);
         this.props.navigator.push({
             screen: 'onboarding.Height',
         });
@@ -40,4 +43,4 @@ class Age extends Component {
     }
 }
 
-export default Age;
+export default withOnboarding(Age);

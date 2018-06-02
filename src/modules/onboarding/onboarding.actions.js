@@ -1,20 +1,22 @@
+import * as actionTypes from './../../constants/actionTypes';
+
 export function setGoal(fitnessGoal) {
     return {
-        type: "SET_GOAL",
+        type: actionTypes.SET_GOAL,
         payload: fitnessGoal
     }
 }
 
 export function setAge(age) {
     return {
-        type: "SET_AGE",
+        type: actionTypes.SET_AGE,
         payload: age
     }
 }
 
 export function setHeight(height, measurementSystem) {
     return {
-        type: "SET_HEIGHT",
+        type: actionTypes.SET_HEIGHT,
         payload: {
             value: height,
             system: measurementSystem

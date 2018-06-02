@@ -6,6 +6,9 @@ import {
     TextInput
 } from 'react-native';
 
+import withOnboarding from './hocs/withOnboarding';
+import * as measureSys from './../../constants/measurementSystems';
+
 class Height extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +19,7 @@ class Height extends Component {
     }
 
     _didTapNext(height) {
+        this.props.actions.setHeight(this.state.heightInput, measureSys.METRIC);
         this.props.navigator.push({
             screen: 'onboarding.Success',
         });
@@ -29,7 +33,7 @@ class Height extends Component {
                     style={{ height: 20 }}
                     placeholder="Enter height"
                     keyboardType="numeric"
-                    onChangeText={(heightInput) => this.setState({ageInput: heightInput})}
+                    onChangeText={(heightInput) => this.setState({heightInput: heightInput})}
                     value = {this.state.heightInput}
                 />
                 <TouchableOpacity onPress={() => this._didTapNext()}>
@@ -40,4 +44,4 @@ class Height extends Component {
     }
 }
 
-export default Height;
+export default withOnboarding(Height);
