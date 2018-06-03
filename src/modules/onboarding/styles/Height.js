@@ -1,7 +1,8 @@
-import { 
+import {
     StyleSheet,
     Dimensions
- } from 'react-native';
+} from 'react-native';
+import * as colors from './../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 29,
         fontWeight: 'bold',
+        color: colors.PRIMARY_COLOR,
     },
     inputPlaceholder: {
         color: '#b6bbbf',

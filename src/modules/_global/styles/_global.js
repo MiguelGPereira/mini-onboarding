@@ -1,17 +1,13 @@
 import { StyleSheet } from 'react-native';
+import * as colors from './../../../constants/colors';
 
 const _global = StyleSheet.create({
     title: {
         fontSize: 25,
         fontWeight: 'bold',
         marginTop: 25,
+        color: colors.PRIMARY_COLOR,
     },
-    button: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginBottom: 25,
-        backgroundColor: 'blue'
-    }
 });
 
 export default _global;

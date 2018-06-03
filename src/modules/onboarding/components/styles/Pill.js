@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import * as colors from './../../../../constants/colors';
 
 const styles = StyleSheet.create({
     pill: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     activeBackground: {
-        backgroundColor: 'black',
+        backgroundColor: colors.PRIMARY_COLOR,
     },
     activeText: {
         color: 'white'

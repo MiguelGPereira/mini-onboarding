@@ -36,7 +36,7 @@ class Success extends Component {
     render() {
         const { goal, age, height } = this.props.onboarding;
 
-        const goalRender = toTitleAllCapitalFormat(goal);
+        const goalRender = goal != undefined && toTitleAllCapitalFormat(goal);
         const heightRender = toMeasureDisplayFormat(height)
 
         return (
@@ -71,6 +71,7 @@ class Success extends Component {
                 <View style={styles.bottom}>
                     <Button
                         text="Save"
+                        onPress={() => this.props.navigator.popToRoot()}
                     />
                 </View>
             </View>

@@ -1,7 +1,8 @@
-import { 
+import {
     StyleSheet,
     Dimensions
- } from 'react-native';
+} from 'react-native';
+import * as colors from './../../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 5,
+        color: colors.PRIMARY_COLOR
     },
     arrowView: {
         marginRight: 10

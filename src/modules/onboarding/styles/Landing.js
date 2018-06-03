@@ -2,6 +2,7 @@ import {
     StyleSheet,
     Dimensions
 } from 'react-native';
+import * as colors from './../../../constants/colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     logoLabel: {
         marginTop: 18,
         fontSize: 12,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: colors.PRIMARY_COLOR,
     },
     content: {
         marginTop: 80,
