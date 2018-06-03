@@ -4,16 +4,6 @@ import {
  } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    formView: {
-        width: Dimensions.get('window').width,
-        alignItems: 'center',
-    },
     input: {
         marginTop: 100,
         height: 35,
@@ -25,9 +15,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
     },
-    buttonView: {
-        marginBottom: 30
-    }
 });
 
 export default styles;
