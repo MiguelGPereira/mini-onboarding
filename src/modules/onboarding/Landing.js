@@ -19,12 +19,56 @@ class Landing extends Component {
     constructor(props) {
         super(props);
 
-        this.contentTranslate = new Animated.Value(200);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+        this.delta = 1000;
+        this.contentTranslate = new Animated.Value(40);
         this.contentOpacity = new Animated.Value(0);
         this.leftBgTranslate = new Animated.Value(-180);
         this.rightBgTranslate = new Animated.Value(180);
         this.logoTranslate = new Animated.Value(0);
         this.logoScale = new Animated.Value(2);
+    }
+
+    onNavigatorEvent(event) {
+        if(event.id == 'didAppear') {
+            Animated.parallel([
+                Animated.timing(this.logoScale, {
+                    duration: this.delta * (2/3),
+                    toValue: 1,
+                    useNativeDriver: true
+                }),
+                Animated.timing(this.logoTranslate, {
+                    duration: this.delta * (2/3),
+                    toValue: -280,
+                    useNativeDriver: true
+                }),
+                Animated.timing(this.leftBgTranslate, {
+                    delay: this.delta * (1/3),
+                    duration: this.delta * (1/3),
+                    toValue: 0,
+                    useNativeDriver: true
+                }),
+                Animated.timing(this.rightBgTranslate, {
+                    delay: this.delta * (1/3),
+                    duration: this.delta * (1/3),
+                    toValue: 0,
+                    useNativeDriver: true
+                }),
+                Animated.timing(this.contentOpacity, {
+                    delay: this.delta * (1/2),
+                    duration: this.delta * (1/2),
+                    toValue: 1,
+                    useNativeDriver: true
+                }),
+                Animated.timing(this.contentTranslate, {
+                    delay: this.delta * (1/2),
+                    duration: this.delta * (1/2),
+                    toValue: 0,
+                    useNativeDriver: true
+                })
+            ]).start();
+        }
     }
 
     _didTapGoal(goal) {

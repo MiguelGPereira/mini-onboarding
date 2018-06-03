@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     content: {
+        marginTop: 80,
         alignItems: 'center'
     },
     scrollView: {
