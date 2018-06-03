@@ -9,7 +9,7 @@ export function isValidAge(ageStr) {
 }
 
 export function isValidMetricHeight(centimetersStr) {
-    if (_isOnlyNumbersDecimal(centimetersStr)) {
+    if (_isOnlyNumbers(centimetersStr)) {
         const centimeters = Number(centimetersStr);
         return _isInHeightInterval(centimeters);
     }
@@ -17,7 +17,7 @@ export function isValidMetricHeight(centimetersStr) {
 }
 
 export function isValidFeetInches(value) {
-    return _isOnlyNumbersDecimal(value);
+    return _isOnlyNumbers(value);
 }
 
 export function isValidImperialHeight(feetStr, inchesStr) {
@@ -28,8 +28,6 @@ export function isValidImperialHeight(feetStr, inchesStr) {
 }
 
 _isOnlyNumbers = str => /^\d+$/.test(str);
-
-_isOnlyNumbersDecimal = str => /^\d+(\.?\d+)?$/.test(str);
 
 _isInAgeInterval = age => age >= 13 && age <= 120;
 

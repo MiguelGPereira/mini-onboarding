@@ -140,7 +140,7 @@ class Height extends Component {
             metricInput = (
                 <TextInput
                     style={styles.input}
-                    maxLength={6}
+                    maxLength={3}
                     keyboardType="numeric"
                     onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
                     value="55"//{this.state.heightCmsInput}
@@ -153,7 +153,7 @@ class Height extends Component {
                         style={{ height: 20 }}
                         placeholder="FT"
                         keyboardType="numeric"
-                        maxLength={5}
+                        maxLength={2}
                         onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
                         value={this.state.heightFtInput}
                     />
@@ -161,7 +161,7 @@ class Height extends Component {
                         style={{ height: 20 }}
                         placeholder="In"
                         keyboardType="numeric"
-                        maxLength={5}
+                        maxLength={2}
                         onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
                         value={this.state.heightInInput}
                     />
