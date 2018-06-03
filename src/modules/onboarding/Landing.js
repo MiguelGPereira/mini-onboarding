@@ -44,7 +44,6 @@ class Landing extends Component {
                     <Image source={require('./../../../assets/imgMat.png')} />
                 </View>
                 
-                
                 <Image style={styles.logo} source={require('./../../../assets/icon8Logo.png')} />
                 <Text style={styles.logoLabel}>WELCOME TO 8FIT</Text>
                 <Text style={_global.title}>What's your goal?</Text>

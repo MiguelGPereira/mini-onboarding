@@ -24,14 +24,6 @@ class Height extends Component {
 
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
-        this.props.navigator.setButtons({
-            leftButtons: [{
-                component: '_global.BackArrow',
-                passProps: {
-                    onPress: () => this.props.navigator.pop()
-                }
-            }]
-        });
         this.state = {
             heightCmsInput: undefined,
             heightFtInput: undefined,
@@ -42,8 +34,18 @@ class Height extends Component {
     }
 
     onNavigatorEvent(event) {
-        if(event.id == 'didAppear'){
-            if(this.state.system == measureSys.IMPERIAL) {
+        if (event.id == 'didAppear') {
+            this.props.navigator.setButtons({
+                leftButtons: [{
+                    component: '_global.BackArrow',
+                    passProps: {
+                        onPress: () => this.props.navigator.pop()
+                    }
+                }],
+                animated: false
+            });
+
+            if (this.state.system == measureSys.IMPERIAL) {
                 this.ftInput.focus();
             } else {
                 this.cmInput.focus();
@@ -74,6 +76,12 @@ class Height extends Component {
 
         this.props.navigator.push({
             screen: 'onboarding.Success',
+            backButtonHidden: true,
+            navigatorStyle: {
+                navBarTranslucent: true,
+                navBarTransparent: true,
+                drawUnderNavBar: true
+            }
         });
     }
 
@@ -198,9 +206,9 @@ class Height extends Component {
                 isValid={this.state.isValid}
                 onContinue={this._didTapNext.bind(this)}
             >
-                <View  style={styles.container}>
+                <View style={styles.container}>
                     {heightInput}
-                    <Pill 
+                    <Pill
                         left='FT'
                         right='CM'
                         init='FT'

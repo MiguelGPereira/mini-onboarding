@@ -2,25 +2,77 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 
+import styles from './styles/Success';
+import _global from './../_global/styles/_global';
 import withOnboarding from './hocs/withOnboarding';
 import { toMeasureDisplayFormat, toTitleAllCapitalFormat } from './../../utils/formatters';
+import Button from './../_global/Button';
 
 class Success extends Component {
+    constructor(props) {
+        super(props);
+
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    }
+
+    onNavigatorEvent(event) {
+        if (event.id == 'didAppear') {
+            this.props.navigator.setButtons({
+                leftButtons: [{
+                    component: '_global.BackArrow',
+                    passProps: {
+                        onPress: () => this.props.navigator.pop()
+                    }
+                }],
+                animated: false
+            });
+        }
+    }
+
     render() {
-        
         const { goal, age, height } = this.props.onboarding;
 
         const goalRender = toTitleAllCapitalFormat(goal);
         const heightRender = toMeasureDisplayFormat(height)
 
         return (
-            <View>
-                <Text>goal: {goalRender}</Text>
-                <Text>age: {age}</Text>
-                <Text>height: {heightRender}</Text>
+            <View style={styles.container}>
+                <Image style={styles.background} source={require('./../../../assets/backgroundGrain.png')} />
+                <View style={styles.leftBg}>
+                    <Image source={require('./../../../assets/imgBeans.png')} />
+                </View>
+                <View style={styles.rightBg}>
+                    <Image source={require('./../../../assets/imgParsley.png')} />
+                </View>
+
+                <View style={styles.top}>
+                    <Text style={_global.title}>Confirm your details:</Text>
+                    <View style={styles.details}>
+                        <View style={styles.detailRow}>
+                            <Text style={styles.title}>Goal</Text>
+                            <Text style={styles.value}>{goalRender}</Text>
+                        </View>
+                        <View style={styles.separator} />
+                        <View style={styles.detailRow}>
+                            <Text style={styles.title}>Age</Text>
+                            <Text style={styles.value}>{age}</Text>
+                        </View>
+                        <View style={styles.separator} />
+                        <View style={styles.detailRow}>
+                            <Text style={styles.title}>Height</Text>
+                            <Text style={styles.value}>{heightRender}</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.bottom}>
+                    <Button
+                        text="Save"
+                    />
+                </View>
             </View>
         );
     }

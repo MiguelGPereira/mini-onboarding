@@ -45,6 +45,7 @@ class Age extends Component {
         this.props.actions.setAge(this.state.ageInput);
         this.props.navigator.push({
             screen: 'onboarding.Height',
+            backButtonHidden: true,
         });
     }
 
