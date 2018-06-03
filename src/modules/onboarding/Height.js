@@ -3,7 +3,8 @@ import {
     View,
     Text,
     TouchableOpacity,
-    TextInput
+    TextInput,
+    Platform
 } from 'react-native';
 
 import withOnboarding from './hocs/withOnboarding';
@@ -37,6 +38,7 @@ class Height extends Component {
         if (event.id == 'didAppear') {
             this.props.navigator.setButtons({
                 leftButtons: [{
+                    id: 'back',
                     component: '_global.BackArrow',
                     passProps: {
                         onPress: () => this.props.navigator.pop()
@@ -78,9 +80,11 @@ class Height extends Component {
             screen: 'onboarding.Success',
             backButtonHidden: true,
             navigatorStyle: {
-                navBarTranslucent: true,
+                navBarTranslucent: Platform.OS === 'ios',
                 navBarTransparent: true,
-                drawUnderNavBar: true
+                drawUnderNavBar: true,
+                topBarElevationShadowEnabled: false,
+                navBarNoBorder: true,
             }
         });
     }
@@ -132,9 +136,9 @@ class Height extends Component {
 
     _didTapMetric() {
         this.setState({
-            heightCmsInput: undefined,
-            heightFtInput: undefined,
-            heightInInput: undefined,
+            heightCmsInput: null,
+            heightFtInput: null,
+            heightInInput: null,
             isValid: false,
             system: measureSys.METRIC
         }, () => this.cmInput.focus());
@@ -142,9 +146,9 @@ class Height extends Component {
 
     _didTapImperial() {
         this.setState({
-            heightCmsInput: undefined,
-            heightFtInput: undefined,
-            heightInInput: undefined,
+            heightCmsInput: null,
+            heightFtInput: null,
+            heightInInput: null,
             isValid: false,
             system: measureSys.IMPERIAL
         }, () => this.ftInput.focus());
@@ -157,12 +161,13 @@ class Height extends Component {
                 <View style={styles.inputSection}>
                     <View>
                         <TextInput
+                            key={1}
                             ref={ref => this.cmInput = ref}
                             style={styles.input}
                             maxLength={3}
+                            underlineColorAndroid="transparent"
                             keyboardType="numeric"
                             onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
-                            value={this.state.heightCmsInput}
                         />
                         <Text style={[
                             styles.inputPlaceholder,
@@ -176,12 +181,13 @@ class Height extends Component {
                 <View style={styles.inputSection}>
                     <View>
                         <TextInput
+                            key={2}
                             ref={ref => this.ftInput = ref}
                             style={styles.input}
                             keyboardType="numeric"
                             maxLength={2}
+                            underlineColorAndroid="transparent"
                             onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
-                            value={this.state.heightFtInput}
                         />
                         <Text style={styles.inputPlaceholder}>Ft</Text>
                     </View>
@@ -190,8 +196,8 @@ class Height extends Component {
                             style={styles.input}
                             keyboardType="numeric"
                             maxLength={2}
+                            underlineColorAndroid="transparent"
                             onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
-                            value={this.state.heightInInput}
                         />
                         <Text style={styles.inputPlaceholder}>In</Text>
                     </View>

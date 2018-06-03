@@ -14,10 +14,9 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     input: {
-        marginTop: 100,
+        marginTop: Dimensions.get('window').height * (1/15),
         marginLeft: 10,
         marginRight: 10,
-        height: 35,
         lineHeight: 35,
         width: Dimensions.get('window').width * 0.4,
         borderBottomWidth: 1,
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
         color: '#b6bbbf',
         transform: [
             { translateY: -20 },
-            { translateX: 110 },
+            { translateX: Dimensions.get('window').width * 0.32 },
         ]
     },
 });

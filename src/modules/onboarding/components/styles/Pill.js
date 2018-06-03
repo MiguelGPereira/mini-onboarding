@@ -3,17 +3,20 @@ import * as colors from './../../../../constants/colors';
 
 const styles = StyleSheet.create({
     pill: {
-        height: 30,
-        width: 180,
+        height: 33,
+        width: 183,
         flexDirection: 'row',
-        borderRadius: 25,
+        borderRadius: 15,
+        backgroundColor: colors.PRIMARY_COLOR,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     partial: {
         height: 30,
         width: 90,
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 1.5,
+        borderColor: colors.PRIMARY_COLOR,
         backgroundColor: 'white',
     },
     left: {
@@ -25,7 +28,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 15,
     },
     text: {
-        color: 'black',
+        color: colors.PRIMARY_COLOR,
         fontSize: 11,
         fontWeight: 'bold',
     },

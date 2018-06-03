@@ -24,6 +24,7 @@ class Age extends Component {
 
         this.props.navigator.setButtons({
             leftButtons: [{
+                id: 'back',
                 component: '_global.BackArrow',
                 passProps: {
                     onPress: () => this.props.navigator.pop()
@@ -64,19 +65,21 @@ class Age extends Component {
         return (
             <Step
                 title="How old are you?"
-                progress={2/3}
+                progress={2 / 3}
                 isValid={this.state.isValid}
                 onContinue={this._didTapNext.bind(this)}
             >
-                <TextInput
-                    ref={ref => this.input = ref}
-                    style={styles.input}
-                    keyboardType="numeric"
-                    maxLength={3}
-                    contextMenuHidden={true}
-                    onChangeText={(ageInput) => this._validateInput(ageInput)}
-                    value={this.state.ageInput}
-                />
+                <View>
+                    <TextInput
+                        ref={ref => this.input = ref}
+                        style={styles.input}
+                        keyboardType="numeric"
+                        maxLength={3}
+                        contextMenuHidden={true}
+                        underlineColorAndroid="transparent"
+                        onChangeText={(ageInput) => this._validateInput(ageInput)}
+                    />
+                </View>
             </Step>
 
         );

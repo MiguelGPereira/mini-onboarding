@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Keyboard,
-    Animated
+    Animated,
+    Dimensions,
 } from 'react-native';
 
 import styles from './styles/Step';
@@ -14,32 +15,49 @@ import _global from './../../_global/styles/_global';
 class Step extends Component {
     constructor(props) {
         super(props);
+
+        this._androidHelperIsTransitioning = false;
         this.buttonViewTranslateY = new Animated.Value(0);
     }
 
     componentWillMount() {
         this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
-        this.keyboardWillShowSub = Keyboard.addListener('keyboardDidHide', this.keyboardWillHide.bind(this));
+        this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow.bind(this));
+        this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide.bind(this));
     }
 
     componentWillUnmount() {
         this.keyboardWillShowSub.remove();
+        this.keyboardDidShowSub.remove();
+        this.keyboardDidHideSub.remove();
     }
 
     keyboardWillShow(event) {
         Animated.timing(this.buttonViewTranslateY, {
-            duration: event.duration * (2 / 3),
+            duration: event.duration,
             toValue: -event.endCoordinates.height,
             useNativeDriver: true
         }).start();
     }
 
-    keyboardWillHide(event) {
-        Animated.timing(this.buttonViewTranslateY, {
-            duration: event.duration,
-            toValue: 0,
-            useNativeDriver: true
-        }).start();
+    keyboardDidShow(event) {
+        if(this.buttonViewTranslateY._value != 0) return;
+        this.submitView._component.measure( (fx, fy, width, height, px, py) => {
+            const offsetY = py;
+            const keyboardH = event.endCoordinates.height;
+        
+            if(offsetY > keyboardH) return;
+
+            Animated.timing(this.buttonViewTranslateY, {
+                duration: 300,
+                toValue: -event.endCoordinates.height,
+                useNativeDriver: true
+            }).start();
+        })
+    }
+
+    keyboardDidHide(event) {
+        this.buttonViewTranslateY.setValue(0);
     }
 
     render() {
@@ -72,7 +90,7 @@ class Step extends Component {
                     </Text>
                     { this.props.children }
                 </View>
-                <Animated.View style={[styles.buttonView, {
+                <Animated.View ref={ref => this.submitView = ref} style={[styles.buttonView, {
                     transform: [
                         { translateY: this.buttonViewTranslateY }
                     ]

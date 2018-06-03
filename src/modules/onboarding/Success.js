@@ -23,6 +23,7 @@ class Success extends Component {
         if (event.id == 'didAppear') {
             this.props.navigator.setButtons({
                 leftButtons: [{
+                    id: 'back',
                     component: '_global.BackArrow',
                     passProps: {
                         onPress: () => this.props.navigator.pop()
@@ -41,12 +42,12 @@ class Success extends Component {
 
         return (
             <View style={styles.container}>
-                <Image style={styles.background} source={require('./../../../assets/backgroundGrain.png')} />
+                <Image style={styles.background} source={require('./img/backgroundGrain.png')} />
                 <View style={styles.leftBg}>
-                    <Image source={require('./../../../assets/imgBeans.png')} />
+                    <Image source={require('./img/imgBeans.png')} />
                 </View>
                 <View style={styles.rightBg}>
-                    <Image source={require('./../../../assets/imgParsley.png')} />
+                    <Image source={require('./img/imgParsley.png')} />
                 </View>
 
                 <View style={styles.top}>

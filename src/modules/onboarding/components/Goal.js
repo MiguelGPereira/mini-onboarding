@@ -19,7 +19,7 @@ class Goal extends Component {
                         <Text>{description}</Text>
                     </View>
                     <View style={styles.arrowView}>
-                        <Image source={require('./../../../../assets/chevronRight.png')} />
+                        <Image source={require('./../img/chevronRight.png')} />
                         
                     </View>
                 </View>

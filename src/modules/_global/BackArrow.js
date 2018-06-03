@@ -9,7 +9,7 @@ class BackArrow extends Component {
         const { onPress } = this.props;
         return (
             <TouchableOpacity onPress={() => onPress()}>
-                <Image source={require('./../../../assets/icArrowLeft.png')} />
+                <Image source={require('./img/icArrowLeft.png')} />
             </TouchableOpacity>
 
         );

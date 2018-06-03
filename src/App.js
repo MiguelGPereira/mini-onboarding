@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
+import { YellowBox } from 'react-native';
 
 import { registerScreens } from './screens';
 import configureStore from './store/configureStore';
+
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 const store = configureStore();
 

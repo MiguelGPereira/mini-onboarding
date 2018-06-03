@@ -6,6 +6,7 @@ import {
     Image,
     ScrollView,
     Animated,
+    Dimensions
 } from 'react-native';
 
 import styles from './styles/Landing';
@@ -22,6 +23,7 @@ class Landing extends Component {
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
         this.delta = 1000;
+        this.logoFinalPosition = Dimensions.get('window').height / 2 - 60;
         this.contentTranslate = new Animated.Value(40);
         this.contentOpacity = new Animated.Value(0);
         this.leftBgTranslate = new Animated.Value(-180);
@@ -40,7 +42,7 @@ class Landing extends Component {
                 }),
                 Animated.timing(this.logoTranslate, {
                     duration: this.delta * (2/3),
-                    toValue: -280,
+                    toValue: -this.logoFinalPosition,
                     useNativeDriver: true
                 }),
                 Animated.timing(this.leftBgTranslate, {
@@ -91,21 +93,21 @@ class Landing extends Component {
 
         return (
             <View style={styles.container}>
-                <Image style={styles.background} source={require('./../../../assets/backgroundGrain.png')} />
+                <Image style={styles.background} source={require('./img/backgroundGrain.png')} />
                 <Animated.View style={[styles.leftBg, {
                     transform: [{
                         translateX: this.leftBgTranslate
                     }]
                 }]}>
-                    <Image source={require('./../../../assets/imgBeans.png')} />
+                    <Image source={require('./img/imgBeans.png')} />
                 </Animated.View>
                 <Animated.View style={[styles.rightBg, {
                     transform: [{
                         translateX: this.rightBgTranslate
                     }]
                 }]}>
-                    <Image style={styles.dumbbell} source={require('./../../../assets/imgDumbbell.png')} />
-                    <Image source={require('./../../../assets/imgMat.png')} />
+                    <Image style={styles.dumbbell} source={require('./img/imgDumbbell.png')} />
+                    <Image source={require('./img/imgMat.png')} />
                 </Animated.View>
 
                 <Animated.Image style={[styles.logo, {
@@ -116,7 +118,7 @@ class Landing extends Component {
                     }, {
                         scaleY: this.logoScale
                     }]
-                }]} source={require('./../../../assets/icon8Logo.png')} />
+                }]} source={require('./img/icon8Logo.png')} />
 
                 <Animated.View style={[styles.content, {
                     opacity: this.contentOpacity,

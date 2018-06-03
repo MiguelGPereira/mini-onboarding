@@ -6,8 +6,7 @@ import * as colors from './../../../constants/colors';
 
 const styles = StyleSheet.create({
     input: {
-        marginTop: 100,
-        height: 35,
+        marginTop: Dimensions.get('window').height * (1/8),
         lineHeight: 35,
         width: Dimensions.get('window').width * 0.90,
         borderBottomWidth: 1,
