@@ -19,6 +19,7 @@ class Step extends Component {
 
     componentWillMount() {
         this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
+        this.keyboardWillShowSub = Keyboard.addListener('keyboardDidHide', this.keyboardWillHide.bind(this));
     }
 
     componentWillUnmount() {
@@ -29,6 +30,14 @@ class Step extends Component {
         Animated.timing(this.buttonViewTranslateY, {
             duration: event.duration * (2 / 3),
             toValue: -event.endCoordinates.height,
+            useNativeDriver: true
+        }).start();
+    }
+
+    keyboardWillHide(event) {
+        Animated.timing(this.buttonViewTranslateY, {
+            duration: event.duration,
+            toValue: 0,
             useNativeDriver: true
         }).start();
     }
