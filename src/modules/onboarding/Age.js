@@ -42,7 +42,6 @@ class Age extends Component {
         event.id == 'didAppear' && this.input.focus();
     }
 
-
     componentWillMount() {
         this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
     }
@@ -53,7 +52,7 @@ class Age extends Component {
 
     keyboardWillShow(event) {
         Animated.timing(this.buttonViewTranslateY, {
-            duration: event.duration,
+            duration: event.duration * (2/3),
             toValue: -event.endCoordinates.height,
             useNativeDriver: true
         }).start();
@@ -99,7 +98,7 @@ class Age extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.formView}>
-                    <ProgressBar percentage={2 / 3} />
+                    <ProgressBar percentage={2/3} />
                     <Text style={_global.title}>
                         How old are you?
                     </Text>
@@ -108,6 +107,7 @@ class Age extends Component {
                         style={styles.input}
                         keyboardType="numeric"
                         maxLength={3}
+                        contextMenuHidden={true}
                         onChangeText={(ageInput) => this._validateInput(ageInput)}
                         value={this.state.ageInput}
                     />
