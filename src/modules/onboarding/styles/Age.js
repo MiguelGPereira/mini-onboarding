@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#abadae',
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 29,
         fontWeight: 'bold',
     },
 });

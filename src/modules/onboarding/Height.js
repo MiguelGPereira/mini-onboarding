@@ -22,12 +22,32 @@ class Height extends Component {
     constructor(props) {
         super(props);
 
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+        this.props.navigator.setButtons({
+            leftButtons: [{
+                component: '_global.BackArrow',
+                passProps: {
+                    onPress: () => this.props.navigator.pop()
+                }
+            }]
+        });
         this.state = {
             heightCmsInput: undefined,
             heightFtInput: undefined,
             heightInInput: undefined,
             isValid: false,
-            system: measureSys.METRIC,
+            system: measureSys.IMPERIAL,
+        }
+    }
+
+    onNavigatorEvent(event) {
+        if(event.id == 'didAppear'){
+            if(this.state.system == measureSys.IMPERIAL) {
+                this.ftInput.focus();
+            } else {
+                this.cmInput.focus();
+            }
         }
     }
 
@@ -109,7 +129,7 @@ class Height extends Component {
             heightInInput: undefined,
             isValid: false,
             system: measureSys.METRIC
-        });
+        }, () => this.cmInput.focus());
     }
 
     _didTapImperial() {
@@ -119,52 +139,54 @@ class Height extends Component {
             heightInInput: undefined,
             isValid: false,
             system: measureSys.IMPERIAL
-        });
+        }, () => this.ftInput.focus());
     }
 
     render() {
-
-        let nextButton = (
-            <TouchableOpacity onPress={() => this._didTapNext()}>
-                <Text>next</Text>
-            </TouchableOpacity>
-        );
-        if (!this.state.isValid) {
-            nextButton = (
-                <Text>enter valid input</Text>
-            );
-        }
-
-        let metricInput;
+        let heightInput;
         if (this.state.system == measureSys.METRIC) {
-            metricInput = (
-                <TextInput
-                    style={styles.input}
-                    maxLength={3}
-                    keyboardType="numeric"
-                    onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
-                    value="55"//{this.state.heightCmsInput}
-                />
+            heightInput = (
+                <View style={styles.inputSection}>
+                    <View>
+                        <TextInput
+                            ref={ref => this.cmInput = ref}
+                            style={styles.input}
+                            maxLength={3}
+                            keyboardType="numeric"
+                            onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
+                            value={this.state.heightCmsInput}
+                        />
+                        <Text style={[
+                            styles.inputPlaceholder,
+                            styles.inputPlaceholderMetric
+                        ]}>Cm</Text>
+                    </View>
+                </View>
             );
         } else {
-            metricInput = (
-                <View>
-                    <TextInput
-                        style={{ height: 20 }}
-                        placeholder="FT"
-                        keyboardType="numeric"
-                        maxLength={2}
-                        onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
-                        value={this.state.heightFtInput}
-                    />
-                    <TextInput
-                        style={{ height: 20 }}
-                        placeholder="In"
-                        keyboardType="numeric"
-                        maxLength={2}
-                        onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
-                        value={this.state.heightInInput}
-                    />
+            heightInput = (
+                <View style={styles.inputSection}>
+                    <View>
+                        <TextInput
+                            ref={ref => this.ftInput = ref}
+                            style={styles.input}
+                            keyboardType="numeric"
+                            maxLength={2}
+                            onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
+                            value={this.state.heightFtInput}
+                        />
+                        <Text style={styles.inputPlaceholder}>Ft</Text>
+                    </View>
+                    <View>
+                        <TextInput
+                            style={styles.input}
+                            keyboardType="numeric"
+                            maxLength={2}
+                            onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
+                            value={this.state.heightInInput}
+                        />
+                        <Text style={styles.inputPlaceholder}>In</Text>
+                    </View>
                 </View>
             );
         }
@@ -176,24 +198,15 @@ class Height extends Component {
                 isValid={this.state.isValid}
                 onContinue={this._didTapNext.bind(this)}
             >
-                <View>
-                    <View style={styles.inputSection}>
-                        <View style={styles.inputView}>
-                            {metricInput}
-                            <Text style={[
-                                styles.inputPlaceholder,
-                                styles.inputPlaceholderMetric
-                            ]}>Cm</Text>
-                        </View>
-                    </View>
-                    <TouchableOpacity onPress={() => this._didTapMetric()}>
-                        <Text>metric</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this._didTapImperial()}>
-                        <Text>imperial</Text>
-                    </TouchableOpacity>
-                    <Pill />
-                    {nextButton}
+                <View  style={styles.container}>
+                    {heightInput}
+                    <Pill 
+                        left='FT'
+                        right='CM'
+                        init='FT'
+                        onLeftPress={() => this._didTapImperial()}
+                        onRightPress={() => this._didTapMetric()}
+                    />
                 </View>
             </Step>
         );

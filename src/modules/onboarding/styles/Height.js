@@ -4,38 +4,34 @@ import {
  } from 'react-native';
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center'
+    },
     inputSection: {
         flexDirection: 'row',
-        justifyContent: 'center'
-    },
-    inputView: {
-
+        justifyContent: 'center',
+        marginBottom: 15
     },
     input: {
         marginTop: 100,
+        marginLeft: 10,
+        marginRight: 10,
         height: 35,
         lineHeight: 35,
-        width: Dimensions.get('window').width * 0.5,
+        width: Dimensions.get('window').width * 0.4,
         borderBottomWidth: 1,
         borderColor: '#abadae',
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 29,
         fontWeight: 'bold',
     },
     inputPlaceholder: {
         color: '#b6bbbf',
-    },
-    inputPlaceholderMetric: {
         transform: [
             { translateY: -20 },
-            { translateX: 130 },
+            { translateX: 110 },
         ]
     },
-    inputPlaceholderImperial: {
-        transform: [
-            { translateX: 120 },
-        ]
-    }
 });
 
 export default styles;

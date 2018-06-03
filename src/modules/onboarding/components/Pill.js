@@ -12,47 +12,59 @@ class Pill extends Component {
         super(props);
 
         this.state = {
-            active: 'FT'
+            left: props.left,
+            right: props.right,
+            active: props.init
         }
+    }
+
+    _didTapLeft(action) {
+        action();
+        this.setState({ active: this.state.left });
+    }
+
+    _didTapRight(action) {
+        action();
+        this.setState({ active: this.state.right });
     }
 
     render() {
 
-        let ftPill;
-        let cmSPill;
-        if (this.state.active == 'FT') {
-            ftPill = (
+        const { left, right, onLeftPress, onRightPress } = this.props;
+
+        let leftPill;
+        let rightPill;
+        if (this.state.active == left) {
+            leftPill = (
                 <View style={[styles.partial, styles.left, styles.activeBackground]}>
-                    <Text style={[styles.text, styles.activeText]}>FT</Text>
+                    <Text style={[styles.text, styles.activeText]}>{left}</Text>
                 </View>
             );
-            cmSPill = (
+            rightPill = (
                 <View style={[styles.partial, styles.right]}>
-                    <Text style={styles.text}>CM</Text>
+                    <Text style={styles.text}>{right}</Text>
                 </View>
             );
         } else {
-            ftPill = (
+            leftPill = (
                 <View style={[styles.partial, styles.left]}>
-                    <Text style={styles.text}>FT</Text>
+                    <Text style={styles.text}>{left}</Text>
                 </View>
             );
-            cmSPill = (
+            rightPill = (
                 <View style={[styles.partial, styles.right, styles.activeBackground]}>
-                    <Text style={[styles.text, styles.activeText]}>CM</Text>
+                    <Text style={[styles.text, styles.activeText]}>{right}</Text>
                 </View>
             );
         }
 
-
-
         return (
             <View style={styles.pill}>
-                <TouchableOpacity onPress={() => this.setState({ active: 'FT' })}>
-                    {ftPill}
+                <TouchableOpacity onPress={() => this._didTapLeft(onLeftPress)}>
+                    {leftPill}
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.setState({ active: 'CM' })}>
-                    {cmSPill}
+                <TouchableOpacity onPress={() => this._didTapRight(onRightPress)}>
+                    {rightPill}
                 </TouchableOpacity>
             </View>
         );
