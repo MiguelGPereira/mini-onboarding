@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import styles from './styles/Landing';
+import _global from './../_global/styles/_global';
 import withOnboarding from './hocs/withOnboarding';
 import * as fitnessGoals from './../../constants/fitnessGoals';
 import { toTitleFormat } from './../../utils/formatters';
@@ -46,7 +47,7 @@ class Landing extends Component {
                 
                 <Image style={styles.logo} source={require('./../../../assets/icon8Logo.png')} />
                 <Text style={styles.logoLabel}>WELCOME TO 8FIT</Text>
-                <Text style={styles.title}>What's your goal?</Text>
+                <Text style={_global.title}>What's your goal?</Text>
                 <ScrollView style={styles.scrollView}>
                     {renderedItems}
                 </ScrollView>

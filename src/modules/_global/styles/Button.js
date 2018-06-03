@@ -1,0 +1,25 @@
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+    container: {
+        height: 50,
+        backgroundColor: 'black',
+        borderRadius: 25,
+        flex: 0,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    disabled: {
+        backgroundColor: '#a9abac',
+    },
+    buttonText: {
+        paddingLeft: 30,
+        paddingRight: 30,
+        lineHeight: 30,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white',
+    }
+});
+
+export default styles;
