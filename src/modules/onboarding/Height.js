@@ -14,6 +14,9 @@ import {
     isValidFeetInches
 } from './../../utils/validators';
 import { toMetric } from './../../utils/converters';
+import Step from './components/Step';
+import Pill from './components/Pill';
+import styles from './styles/Height';
 
 class Height extends Component {
     constructor(props) {
@@ -29,11 +32,11 @@ class Height extends Component {
     }
 
     _didTapNext() {
-        const { 
-            heightCmsInput, 
-            heightFtInput, 
-            heightInInput, 
-            system 
+        const {
+            heightCmsInput,
+            heightFtInput,
+            heightInInput,
+            system
         } = this.state;
 
         const height = { system };
@@ -42,7 +45,7 @@ class Height extends Component {
             height.value = heightCmsInput;
         } else {
             height.value = toMetric(
-                Number(heightFtInput), 
+                Number(heightFtInput),
                 Number(heightInInput)
             );
         }
@@ -95,7 +98,7 @@ class Height extends Component {
             && heightFtInput != undefined
             && heightInInput != undefined
             && isValidImperialHeight(heightFtInput, heightInInput);
-        
+
         return validMetric || validImperial;
     }
 
@@ -106,7 +109,7 @@ class Height extends Component {
             heightInInput: undefined,
             isValid: false,
             system: measureSys.METRIC
-         });
+        });
     }
 
     _didTapImperial() {
@@ -116,7 +119,7 @@ class Height extends Component {
             heightInInput: undefined,
             isValid: false,
             system: measureSys.IMPERIAL
-         });
+        });
     }
 
     render() {
@@ -136,12 +139,11 @@ class Height extends Component {
         if (this.state.system == measureSys.METRIC) {
             metricInput = (
                 <TextInput
-                    style={{ height: 20 }}
-                    placeholder="CM"
-                    maxLength = {6}
+                    style={styles.input}
+                    maxLength={6}
                     keyboardType="numeric"
                     onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
-                    value={this.state.heightCmsInput}
+                    value="55"//{this.state.heightCmsInput}
                 />
             );
         } else {
@@ -151,7 +153,7 @@ class Height extends Component {
                         style={{ height: 20 }}
                         placeholder="FT"
                         keyboardType="numeric"
-                        maxLength = {5}
+                        maxLength={5}
                         onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
                         value={this.state.heightFtInput}
                     />
@@ -159,7 +161,7 @@ class Height extends Component {
                         style={{ height: 20 }}
                         placeholder="In"
                         keyboardType="numeric"
-                        maxLength = {5}
+                        maxLength={5}
                         onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
                         value={this.state.heightInInput}
                     />
@@ -168,17 +170,32 @@ class Height extends Component {
         }
 
         return (
-            <View>
-                <Text>Select height</Text>
-                {metricInput}
-                <TouchableOpacity onPress={() => this._didTapMetric()}>
-                    <Text>metric</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this._didTapImperial()}>
-                    <Text>imperial</Text>
-                </TouchableOpacity>
-                {nextButton}
-            </View>
+            <Step
+                title="How tall are you?"
+                progress={3 / 3}
+                isValid={this.state.isValid}
+                onContinue={this._didTapNext.bind(this)}
+            >
+                <View>
+                    <View style={styles.inputSection}>
+                        <View style={styles.inputView}>
+                            {metricInput}
+                            <Text style={[
+                                styles.inputPlaceholder,
+                                styles.inputPlaceholderMetric
+                            ]}>Cm</Text>
+                        </View>
+                    </View>
+                    <TouchableOpacity onPress={() => this._didTapMetric()}>
+                        <Text>metric</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this._didTapImperial()}>
+                        <Text>imperial</Text>
+                    </TouchableOpacity>
+                    <Pill />
+                    {nextButton}
+                </View>
+            </Step>
         );
     }
 }
