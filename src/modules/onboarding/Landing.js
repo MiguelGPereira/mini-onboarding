@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     Image,
     ScrollView,
+    Animated,
 } from 'react-native';
 
 import styles from './styles/Landing';
@@ -15,6 +16,17 @@ import { toTitleFormat } from './../../utils/formatters';
 import Goal from './components/Goal';
 
 class Landing extends Component {
+    constructor(props) {
+        super(props);
+
+        this.contentTranslate = new Animated.Value(200);
+        this.contentOpacity = new Animated.Value(0);
+        this.leftBgTranslate = new Animated.Value(-180);
+        this.rightBgTranslate = new Animated.Value(180);
+        this.logoTranslate = new Animated.Value(0);
+        this.logoScale = new Animated.Value(2);
+    }
+
     _didTapGoal(goal) {
         this.props.actions.setGoal(goal);
         this.props.navigator.push({
@@ -30,26 +42,50 @@ class Landing extends Component {
                 title={toTitleFormat(goal)}
                 description={fitnessGoals[goal].description}
                 _didTapGoal={this._didTapGoal.bind(this)}
-             />
+            />
         );
 
         return (
             <View style={styles.container}>
                 <Image style={styles.background} source={require('./../../../assets/backgroundGrain.png')} />
-                <View style={styles.leftBg}>
+                <Animated.View style={[styles.leftBg, {
+                    transform: [{
+                        translateX: this.leftBgTranslate
+                    }]
+                }]}>
                     <Image source={require('./../../../assets/imgBeans.png')} />
-                </View>
-                <View style={styles.rightBg}>
+                </Animated.View>
+                <Animated.View style={[styles.rightBg, {
+                    transform: [{
+                        translateX: this.rightBgTranslate
+                    }]
+                }]}>
                     <Image style={styles.dumbbell} source={require('./../../../assets/imgDumbbell.png')} />
                     <Image source={require('./../../../assets/imgMat.png')} />
-                </View>
-                
-                <Image style={styles.logo} source={require('./../../../assets/icon8Logo.png')} />
-                <Text style={styles.logoLabel}>WELCOME TO 8FIT</Text>
-                <Text style={_global.title}>What's your goal?</Text>
-                <ScrollView style={styles.scrollView}>
-                    {renderedItems}
-                </ScrollView>
+                </Animated.View>
+
+                <Animated.Image style={[styles.logo, {
+                    transform: [{
+                        translateY: this.logoTranslate
+                    }, {
+                        scaleX: this.logoScale
+                    }, {
+                        scaleY: this.logoScale
+                    }]
+                }]} source={require('./../../../assets/icon8Logo.png')} />
+
+                <Animated.View style={[styles.content, {
+                    opacity: this.contentOpacity,
+                    transform: [{
+                        translateY: this.contentTranslate
+                    }]
+                }]}>
+                    <Text style={styles.logoLabel}>WELCOME TO 8FIT</Text>
+                    <Text style={_global.title}>What's your goal?</Text>
+                    <ScrollView style={styles.scrollView}>
+                        {renderedItems}
+                    </ScrollView>
+                </Animated.View>
             </View>
         );
     }

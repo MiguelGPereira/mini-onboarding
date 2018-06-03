@@ -1,4 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {
+    StyleSheet,
+    Dimensions
+} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -36,12 +39,19 @@ const styles = StyleSheet.create({
         }]
     },
     logo: {
-        marginTop: 50,
+        position: 'absolute',
+        width: 22,
+        height: 44,
+        top: Dimensions.get('window').height / 2 - 44 / 2,
+        left: Dimensions.get('window').width / 2 - 22 / 2,
     },
     logoLabel: {
         marginTop: 18,
         fontSize: 12,
         fontWeight: 'bold'
+    },
+    content: {
+        alignItems: 'center'
     },
     scrollView: {
         marginTop: 35,
