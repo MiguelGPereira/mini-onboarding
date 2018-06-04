@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Navigation } from 'react-native-navigation';
-import { Provider } from 'react-redux';
-import { YellowBox } from 'react-native';
+import React, { Component } from "react";
+import { Navigation } from "react-native-navigation";
+import { Provider } from "react-redux";
+import { YellowBox } from "react-native";
 
-import { registerScreens } from './screens';
-import configureStore from './store/configureStore';
+import { registerScreens } from "./screens";
+import configureStore from "./store/configureStore";
 
 YellowBox.ignoreWarnings([
-  'Warning: isMounted(...) is deprecated', 
-  'Module RCTImageLoader', 
-  'Class RCTCxxModule was not exported'
+  "Warning: isMounted(...) is deprecated", 
+  "Module RCTImageLoader", 
+  "Class RCTCxxModule was not exported"
 ]);
 
 const store = configureStore();
@@ -26,7 +26,7 @@ class App extends Component {
   _startApp() {
     Navigation.startSingleScreenApp({
       screen: {
-        screen: 'onboarding.Landing',
+        screen: "onboarding.Landing",
         navigatorStyle: {
           navBarHidden: true
         }

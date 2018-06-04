@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
     TouchableOpacity,
     Image
-} from 'react-native';
+} from "react-native";
 
-import styles from './styles/Success';
-import _global from './../_global/styles/_global';
-import withOnboarding from './hocs/withOnboarding';
-import { toMeasureDisplayFormat, toTitleAllCapitalFormat } from './../../utils/formatters';
-import Button from './../_global/Button';
+import styles from "./styles/Success";
+import _global from "./../_global/styles/_global";
+import withOnboarding from "./hocs/withOnboarding";
+import { toMeasureDisplayFormat, toTitleAllCapitalFormat } from "./../../utils/formatters";
+import Button from "./../_global/Button";
 
 class Success extends Component {
     constructor(props) {
@@ -20,11 +20,11 @@ class Success extends Component {
     }
 
     onNavigatorEvent(event) {
-        if (event.id === 'didAppear') {
+        if (event.id === "didAppear") {
             this.props.navigator.setButtons({
                 leftButtons: [{
-                    id: 'back',
-                    component: '_global.BackArrow',
+                    id: "back",
+                    component: "_global.BackArrow",
                     passProps: {
                         onPress: () => this.props.navigator.pop()
                     }
@@ -42,12 +42,12 @@ class Success extends Component {
 
         return (
             <View style={styles.container}>
-                <Image style={styles.background} source={require('./img/backgroundGrain.png')} />
+                <Image style={styles.background} source={require("./img/backgroundGrain.png")} />
                 <View style={styles.leftBg}>
-                    <Image source={require('./img/imgBeans.png')} />
+                    <Image source={require("./img/imgBeans.png")} />
                 </View>
                 <View style={styles.rightBg}>
-                    <Image source={require('./img/imgParsley.png')} />
+                    <Image source={require("./img/imgParsley.png")} />
                 </View>
 
                 <View style={styles.top}>

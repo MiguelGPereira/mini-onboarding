@@ -1,16 +1,16 @@
 import {
     StyleSheet,
     Dimensions
-} from 'react-native';
-import * as colors from './../../../constants/colors';
+} from "react-native";
+import * as colors from "./../../../constants/colors";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: "center"
     },
     background: {
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
@@ -19,21 +19,21 @@ const styles = StyleSheet.create({
         height: undefined,
     },
     leftBg: {
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         bottom: 0,
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: "center",
     },
     rightBg: {
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         right: 0,
         bottom: 10,
         flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end'
+        justifyContent: "flex-end",
+        alignItems: "flex-end"
     },
     dumbbell: {
         zIndex: 1,
@@ -42,21 +42,21 @@ const styles = StyleSheet.create({
         }]
     },
     logo: {
-        position: 'absolute',
+        position: "absolute",
         width: 22,
         height: 44,
-        top: Dimensions.get('window').height / 2 - 44 / 2,
-        left: Dimensions.get('window').width / 2 - 22 / 2,
+        top: Dimensions.get("window").height / 2 - 44 / 2,
+        left: Dimensions.get("window").width / 2 - 22 / 2,
     },
     logoLabel: {
         marginTop: 18,
         fontSize: 12,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         color: colors.PRIMARY_COLOR,
     },
     content: {
         marginTop: 80,
-        alignItems: 'center'
+        alignItems: "center"
     },
     scrollView: {
         marginTop: 35,

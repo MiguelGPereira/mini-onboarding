@@ -1,7 +1,7 @@
-import { compose } from 'redux';
+import { compose } from "redux";
 
-import * as measureSys from './../constants/measurementSystems';
-import { toImperial } from './converters';
+import * as measureSys from "./../constants/measurementSystems";
+import { toImperial } from "./converters";
 
 export function toTitleFormat(str) {
     const composeTitle = compose(

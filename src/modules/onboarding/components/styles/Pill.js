@@ -1,23 +1,23 @@
-import { StyleSheet } from 'react-native';
-import * as colors from './../../../../constants/colors';
+import { StyleSheet } from "react-native";
+import * as colors from "./../../../../constants/colors";
 
 const styles = StyleSheet.create({
     pill: {
         height: 33,
         width: 183,
-        flexDirection: 'row',
+        flexDirection: "row",
         borderRadius: 15,
         backgroundColor: colors.PRIMARY_COLOR,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
     },
     partial: {
         height: 30,
         width: 90,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         borderColor: colors.PRIMARY_COLOR,
-        backgroundColor: 'white',
+        backgroundColor: "white",
     },
     left: {
         borderTopLeftRadius: 15,
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     text: {
         color: colors.PRIMARY_COLOR,
         fontSize: 11,
-        fontWeight: 'bold',
+        fontWeight: "bold",
     },
     activeBackground: {
         backgroundColor: colors.PRIMARY_COLOR,
     },
     activeText: {
-        color: 'white'
+        color: "white"
     },
 });
 

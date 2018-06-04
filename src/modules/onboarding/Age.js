@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
@@ -6,15 +6,15 @@ import {
     TextInput,
     Animated,
     Keyboard,
-} from 'react-native';
+} from "react-native";
 
-import styles from './styles/Age';
-import _global from './../_global/styles/_global';
-import { isValidAge } from './../../utils/validators';
-import withOnboarding from './hocs/withOnboarding';
-import Button from './../_global/Button';
-import ProgressBar from './components/ProgressBar';
-import Step from './components/Step';
+import styles from "./styles/Age";
+import _global from "./../_global/styles/_global";
+import { isValidAge } from "./../../utils/validators";
+import withOnboarding from "./hocs/withOnboarding";
+import Button from "./../_global/Button";
+import ProgressBar from "./components/ProgressBar";
+import Step from "./components/Step";
 
 class Age extends Component {
     constructor(props) {
@@ -24,8 +24,8 @@ class Age extends Component {
 
         this.props.navigator.setButtons({
             leftButtons: [{
-                id: 'back',
-                component: '_global.BackArrow',
+                id: "back",
+                component: "_global.BackArrow",
                 passProps: {
                     onPress: () => this.props.navigator.pop()
                 }
@@ -39,13 +39,13 @@ class Age extends Component {
     }
 
     onNavigatorEvent(event) {
-        event.id === 'didAppear' && this.input.focus();
+        event.id === "didAppear" && this.input.focus();
     }
 
     _didTapNext() {
         this.props.actions.setAge(this.state.ageInput);
         this.props.navigator.push({
-            screen: 'onboarding.Height',
+            screen: "onboarding.Height",
             backButtonHidden: true,
         });
     }

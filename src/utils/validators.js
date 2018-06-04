@@ -1,4 +1,4 @@
-import { toMetric } from './converters';
+import { toMetric } from "./converters";
 
 export function isValidAge(ageStr) {
     if (_isNumbers(ageStr)) {
@@ -27,7 +27,7 @@ export function isValidImperialHeight(feetStr, inchesStr) {
     return _isInHeightInterval(centimeters);
 }
 
-_isNumbers = str => /^\d+$/.test(str) && str.charAt(0) != '0';
+_isNumbers = str => /^\d+$/.test(str) && str.charAt(0) != "0";
 
 _isInAgeInterval = age => age >= 13 && age <= 120;
 

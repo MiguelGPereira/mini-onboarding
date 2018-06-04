@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
     TouchableOpacity,
     TextInput,
     Platform
-} from 'react-native';
+} from "react-native";
 
-import withOnboarding from './hocs/withOnboarding';
-import * as measureSys from './../../constants/measurementSystems';
+import withOnboarding from "./hocs/withOnboarding";
+import * as measureSys from "./../../constants/measurementSystems";
 import {
     isValidMetricHeight,
     isValidImperialHeight,
     isValidFeetInches
-} from './../../utils/validators';
-import { toMetric } from './../../utils/converters';
-import Step from './components/Step';
-import Pill from './components/Pill';
-import styles from './styles/Height';
+} from "./../../utils/validators";
+import { toMetric } from "./../../utils/converters";
+import Step from "./components/Step";
+import Pill from "./components/Pill";
+import styles from "./styles/Height";
 
 class Height extends Component {
     constructor(props) {
@@ -35,11 +35,11 @@ class Height extends Component {
     }
 
     onNavigatorEvent(event) {
-        if (event.id === 'didAppear') {
+        if (event.id === "didAppear") {
             this.props.navigator.setButtons({
                 leftButtons: [{
-                    id: 'back',
-                    component: '_global.BackArrow',
+                    id: "back",
+                    component: "_global.BackArrow",
                     passProps: {
                         onPress: () => this.props.navigator.pop()
                     }
@@ -77,10 +77,10 @@ class Height extends Component {
         this.props.actions.setHeight(height);
 
         this.props.navigator.push({
-            screen: 'onboarding.Success',
+            screen: "onboarding.Success",
             backButtonHidden: true,
             navigatorStyle: {
-                navBarTranslucent: Platform.OS === 'ios',
+                navBarTranslucent: Platform.OS === "ios",
                 navBarTransparent: true,
                 drawUnderNavBar: true,
                 topBarElevationShadowEnabled: false,
@@ -92,21 +92,21 @@ class Height extends Component {
     _validateInput(heightInput, measure) {
         let validHeight;
         switch (measure) {
-            case 'cms':
+            case "cms":
                 validHeight = isValidMetricHeight(heightInput);
-                if (validHeight) this._updateState('heightCmsInput', heightInput);
+                if (validHeight) this._updateState("heightCmsInput", heightInput);
                 else this.setState({ isValid: false });
                 break;
 
-            case 'ft':
+            case "ft":
                 validHeight = isValidFeetInches(heightInput);
-                if (validHeight) this._updateState('heightFtInput', heightInput);
+                if (validHeight) this._updateState("heightFtInput", heightInput);
                 else this.setState({ isValid: false });
                 break;
 
-            case 'in':
+            case "in":
                 validHeight = isValidFeetInches(heightInput);
-                if (validHeight) this._updateState('heightInInput', heightInput);
+                if (validHeight) this._updateState("heightInInput", heightInput);
                 else this.setState({ isValid: false });
                 break;
         }
@@ -167,7 +167,7 @@ class Height extends Component {
                             maxLength={3}
                             underlineColorAndroid="transparent"
                             keyboardType="numeric"
-                            onChangeText={(heightInput) => this._validateInput(heightInput, 'cms')}
+                            onChangeText={(heightInput) => this._validateInput(heightInput, "cms")}
                         />
                         <Text style={[
                             styles.inputPlaceholder,
@@ -187,7 +187,7 @@ class Height extends Component {
                             keyboardType="numeric"
                             maxLength={2}
                             underlineColorAndroid="transparent"
-                            onChangeText={(heightInput) => this._validateInput(heightInput, 'ft')}
+                            onChangeText={(heightInput) => this._validateInput(heightInput, "ft")}
                         />
                         <Text style={styles.inputPlaceholder}>Ft</Text>
                     </View>
@@ -197,7 +197,7 @@ class Height extends Component {
                             keyboardType="numeric"
                             maxLength={2}
                             underlineColorAndroid="transparent"
-                            onChangeText={(heightInput) => this._validateInput(heightInput, 'in')}
+                            onChangeText={(heightInput) => this._validateInput(heightInput, "in")}
                         />
                         <Text style={styles.inputPlaceholder}>In</Text>
                     </View>
@@ -215,9 +215,9 @@ class Height extends Component {
                 <View style={styles.container}>
                     {heightInput}
                     <Pill
-                        left='FT'
-                        right='CM'
-                        init='FT'
+                        left="FT"
+                        right="CM"
+                        init="FT"
                         onLeftPress={() => this._didTapImperial()}
                         onRightPress={() => this._didTapMetric()}
                     />

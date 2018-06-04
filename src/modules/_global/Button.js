@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
     TouchableOpacity,
-} from 'react-native';
-import PropTypes from 'prop-types';
+} from "react-native";
+import PropTypes from "prop-types";
 
-import styles from './styles/Button';
+import styles from "./styles/Button";
 
 class Button extends Component {
     render() {

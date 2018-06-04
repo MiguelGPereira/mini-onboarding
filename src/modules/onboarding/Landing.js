@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
@@ -7,14 +7,14 @@ import {
     ScrollView,
     Animated,
     Dimensions
-} from 'react-native';
+} from "react-native";
 
-import styles from './styles/Landing';
-import _global from './../_global/styles/_global';
-import withOnboarding from './hocs/withOnboarding';
-import * as fitnessGoals from './../../constants/fitnessGoals';
-import { toTitleFormat } from './../../utils/formatters';
-import Goal from './components/Goal';
+import styles from "./styles/Landing";
+import _global from "./../_global/styles/_global";
+import withOnboarding from "./hocs/withOnboarding";
+import * as fitnessGoals from "./../../constants/fitnessGoals";
+import { toTitleFormat } from "./../../utils/formatters";
+import Goal from "./components/Goal";
 
 class Landing extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Landing extends Component {
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
         this.delta = 1000;
-        this.logoFinalPosition = Dimensions.get('window').height / 2 - 60;
+        this.logoFinalPosition = Dimensions.get("window").height / 2 - 60;
         this.contentTranslate = new Animated.Value(40);
         this.contentOpacity = new Animated.Value(0);
         this.leftBgTranslate = new Animated.Value(-180);
@@ -33,7 +33,7 @@ class Landing extends Component {
     }
 
     onNavigatorEvent(event) {
-        if(event.id === 'didAppear') {
+        if(event.id === "didAppear") {
             Animated.parallel([
                 Animated.timing(this.logoScale, {
                     duration: this.delta * (2/3),
@@ -76,7 +76,7 @@ class Landing extends Component {
     _didTapGoal(goal) {
         this.props.actions.setGoal(goal);
         this.props.navigator.push({
-            screen: 'onboarding.Age',
+            screen: "onboarding.Age",
         });
     }
 
@@ -93,21 +93,21 @@ class Landing extends Component {
 
         return (
             <View style={styles.container}>
-                <Image style={styles.background} source={require('./img/backgroundGrain.png')} />
+                <Image style={styles.background} source={require("./img/backgroundGrain.png")} />
                 <Animated.View style={[styles.leftBg, {
                     transform: [{
                         translateX: this.leftBgTranslate
                     }]
                 }]}>
-                    <Image source={require('./img/imgBeans.png')} />
+                    <Image source={require("./img/imgBeans.png")} />
                 </Animated.View>
                 <Animated.View style={[styles.rightBg, {
                     transform: [{
                         translateX: this.rightBgTranslate
                     }]
                 }]}>
-                    <Image style={styles.dumbbell} source={require('./img/imgDumbbell.png')} />
-                    <Image source={require('./img/imgMat.png')} />
+                    <Image style={styles.dumbbell} source={require("./img/imgDumbbell.png")} />
+                    <Image source={require("./img/imgMat.png")} />
                 </Animated.View>
 
                 <Animated.Image style={[styles.logo, {
@@ -118,7 +118,7 @@ class Landing extends Component {
                     }, {
                         scaleY: this.logoScale
                     }]
-                }]} source={require('./img/icon8Logo.png')} />
+                }]} source={require("./img/icon8Logo.png")} />
 
                 <Animated.View style={[styles.content, {
                     opacity: this.contentOpacity,
@@ -127,7 +127,7 @@ class Landing extends Component {
                     }]
                 }]}>
                     <Text style={styles.logoLabel}>WELCOME TO 8FIT</Text>
-                    <Text style={_global.title}>What's your goal?</Text>
+                    <Text style={_global.title}>What"s your goal?</Text>
                     <ScrollView style={styles.scrollView}>
                         {renderedItems}
                     </ScrollView>

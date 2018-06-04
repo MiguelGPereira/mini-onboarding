@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     compose,
     bindActionCreators
-} from 'redux';
-import { connect } from 'react-redux';
+} from "redux";
+import { connect } from "react-redux";
 
-import * as actions from './../onboarding.actions';
+import * as actions from "./../onboarding.actions";
 
 // enhance the onboarding main components with the onboarding part of the Store
 export default function withOnboarding(WrappedComponent) {

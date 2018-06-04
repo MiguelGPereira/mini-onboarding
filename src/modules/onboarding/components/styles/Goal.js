@@ -1,18 +1,18 @@
 import {
     StyleSheet,
     Dimensions
-} from 'react-native';
-import * as colors from './../../../../constants/colors';
+} from "react-native";
+import * as colors from "./../../../../constants/colors";
 
 const styles = StyleSheet.create({
     container: {
-        width: Dimensions.get('window').width * 0.90,
+        width: Dimensions.get("window").width * 0.90,
         height: 100,
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'white',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "white",
         marginBottom: 20,
         shadowOpacity: 0.08,
         shadowOffset: {
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
             height: 5
         },
         borderRadius: 10,
-        borderColor: '#efefef',
+        borderColor: "#efefef",
         borderWidth: 1
     },
     labelsView: {
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         marginBottom: 5,
         color: colors.PRIMARY_COLOR
     },

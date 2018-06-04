@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
     TouchableOpacity,
     Image,
-} from 'react-native';
-import PropTypes from 'prop-types';
+} from "react-native";
+import PropTypes from "prop-types";
 
-import styles from './styles/Goal';
+import styles from "./styles/Goal";
 
 class Goal extends Component {
     render() {
@@ -20,7 +20,7 @@ class Goal extends Component {
                         <Text>{description}</Text>
                     </View>
                     <View style={styles.arrowView}>
-                        <Image source={require('./../img/chevronRight.png')} />
+                        <Image source={require("./../img/chevronRight.png")} />
 
                     </View>
                 </View>

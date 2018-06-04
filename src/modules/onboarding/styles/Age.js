@@ -1,19 +1,19 @@
 import {
     StyleSheet,
     Dimensions
-} from 'react-native';
-import * as colors from './../../../constants/colors';
+} from "react-native";
+import * as colors from "./../../../constants/colors";
 
 const styles = StyleSheet.create({
     input: {
-        marginTop: Dimensions.get('window').height * (1/8),
+        marginTop: Dimensions.get("window").height * (1/8),
         lineHeight: 35,
-        width: Dimensions.get('window').width * 0.90,
+        width: Dimensions.get("window").width * 0.90,
         borderBottomWidth: 1,
-        borderColor: '#abadae',
-        textAlign: 'center',
+        borderColor: "#abadae",
+        textAlign: "center",
         fontSize: 29,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         color: colors.PRIMARY_COLOR,
     },
 });

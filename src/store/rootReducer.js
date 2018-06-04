@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import onboarding from './../modules/onboarding/onboarding.reducer';
+import onboarding from "./../modules/onboarding/onboarding.reducer";
 
 const rootReducer = combineReducers({
 	onboarding

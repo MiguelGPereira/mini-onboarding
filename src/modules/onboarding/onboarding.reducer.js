@@ -1,5 +1,5 @@
-import initialState from './../../store/initialState';
-import * as actionTypes from './../../constants/actionTypes';
+import initialState from "./../../store/initialState";
+import * as actionTypes from "./../../constants/actionTypes";
 
 export default function (state = initialState.onboarding, action) {
     switch (action.type) {

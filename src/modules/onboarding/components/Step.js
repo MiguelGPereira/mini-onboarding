@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
     View,
     Text,
     Keyboard,
     Animated,
     Dimensions,
-} from 'react-native';
-import PropTypes from 'prop-types';
+} from "react-native";
+import PropTypes from "prop-types";
 
-import styles from './styles/Step';
-import Button from './../../_global/Button';
-import ProgressBar from './ProgressBar';
-import _global from './../../_global/styles/_global';
+import styles from "./styles/Step";
+import Button from "./../../_global/Button";
+import ProgressBar from "./ProgressBar";
+import _global from "./../../_global/styles/_global";
 
 class Step extends Component {
     constructor(props) {
@@ -22,9 +22,9 @@ class Step extends Component {
     }
 
     componentWillMount() {
-        this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
-        this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow.bind(this));
-        this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide.bind(this));
+        this.keyboardWillShowSub = Keyboard.addListener("keyboardWillShow", this.keyboardWillShow.bind(this));
+        this.keyboardDidShowSub = Keyboard.addListener("keyboardDidShow", this.keyboardDidShow.bind(this));
+        this.keyboardDidHideSub = Keyboard.addListener("keyboardDidHide", this.keyboardDidHide.bind(this));
     }
 
     componentWillUnmount() {
