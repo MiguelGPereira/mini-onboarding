@@ -4,6 +4,7 @@ import {
     Text,
     TouchableOpacity,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import styles from './styles/Button';
 
@@ -23,6 +24,12 @@ class Button extends Component {
             </TouchableOpacity>
         );
     }
+}
+
+Button.propTypes = {
+    text: PropTypes.string.isRequired,
+    onPress: PropTypes.func,
+    disabled: PropTypes.bool,
 }
 
 export default Button;

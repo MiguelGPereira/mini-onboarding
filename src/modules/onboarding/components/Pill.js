@@ -4,6 +4,7 @@ import {
     Text,
     TouchableOpacity,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import styles from './styles/Pill';
 
@@ -69,6 +70,13 @@ class Pill extends Component {
             </View>
         );
     }
+}
+
+Pill.propTypes = {
+    left: PropTypes.string.isRequired, 
+    right: PropTypes.string.isRequired, 
+    onLeftPress: PropTypes.func.isRequired, 
+    onRightPress: PropTypes.func.isRequired,
 }
 
 export default Pill;

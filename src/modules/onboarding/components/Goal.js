@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     Image,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import styles from './styles/Goal';
 
@@ -20,12 +21,19 @@ class Goal extends Component {
                     </View>
                     <View style={styles.arrowView}>
                         <Image source={require('./../img/chevronRight.png')} />
-                        
+
                     </View>
                 </View>
             </TouchableOpacity>
         );
     }
+}
+
+Goal.propTypes = {
+    goal: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    _didTapGoal: PropTypes.func.isRequired,
 }
 
 export default Goal;

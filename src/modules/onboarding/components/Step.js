@@ -6,6 +6,7 @@ import {
     Animated,
     Dimensions,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import styles from './styles/Step';
 import Button from './../../_global/Button';
@@ -100,6 +101,14 @@ class Step extends Component {
             </View>
         );
     }
+}
+
+Step.propTypes = {
+    title: PropTypes.string.isRequired, 
+    progress: PropTypes.number.isRequired, 
+    isValid: PropTypes.bool.isRequired, 
+    onContinue: PropTypes.func.isRequired, 
+    children: PropTypes.element.isRequired,
 }
 
 export default Step;

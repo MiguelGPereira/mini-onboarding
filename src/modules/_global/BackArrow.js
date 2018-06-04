@@ -3,6 +3,7 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 class BackArrow extends Component {
     render() {
@@ -14,6 +15,10 @@ class BackArrow extends Component {
 
         );
     }
+}
+
+BackArrow.propTypes = {
+    onPress: PropTypes.func
 }
 
 export default BackArrow;

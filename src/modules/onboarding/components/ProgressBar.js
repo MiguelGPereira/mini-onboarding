@@ -3,6 +3,7 @@ import {
     View,
     Dimensions
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import styles from './styles/ProgressBar';
 
@@ -16,6 +17,10 @@ class ProgressBar extends Component {
             }]} />
         );
     }
+}
+
+ProgressBar.propTypes = {
+    progress: PropTypes.number.isRequired
 }
 
 export default ProgressBar;
