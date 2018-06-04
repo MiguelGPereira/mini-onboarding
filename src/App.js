@@ -6,7 +6,11 @@ import { YellowBox } from 'react-native';
 import { registerScreens } from './screens';
 import configureStore from './store/configureStore';
 
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+YellowBox.ignoreWarnings([
+  'Warning: isMounted(...) is deprecated', 
+  'Module RCTImageLoader', 
+  'Class RCTCxxModule was not exported'
+]);
 
 const store = configureStore();
 

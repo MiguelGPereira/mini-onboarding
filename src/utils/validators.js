@@ -1,7 +1,7 @@
 import { toMetric } from './converters';
 
 export function isValidAge(ageStr) {
-    if (_isOnlyNumbers(ageStr)) {
+    if (_isNumbers(ageStr)) {
         const age = parseInt(ageStr);
         return _isInAgeInterval(age);
     }
@@ -9,7 +9,7 @@ export function isValidAge(ageStr) {
 }
 
 export function isValidMetricHeight(centimetersStr) {
-    if (_isOnlyNumbers(centimetersStr)) {
+    if (_isNumbers(centimetersStr)) {
         const centimeters = Number(centimetersStr);
         return _isInHeightInterval(centimeters);
     }
@@ -17,7 +17,7 @@ export function isValidMetricHeight(centimetersStr) {
 }
 
 export function isValidFeetInches(value) {
-    return _isOnlyNumbers(value);
+    return _isNumbers(value);
 }
 
 export function isValidImperialHeight(feetStr, inchesStr) {
@@ -27,7 +27,7 @@ export function isValidImperialHeight(feetStr, inchesStr) {
     return _isInHeightInterval(centimeters);
 }
 
-_isOnlyNumbers = str => /^\d+$/.test(str);
+_isNumbers = str => /^\d+$/.test(str) && str.charAt(0) != '0';
 
 _isInAgeInterval = age => age >= 13 && age <= 120;
 
