@@ -22,7 +22,8 @@ react-native run-ios
 react-native run-android
 ```
 
-To run on a physical device, use Xcode for iOS or the CLI with `adb` installed for Android.
+To run on a physical device, use Xcode for iOS or the CLI with `adb` installed for Android.  
+To see the keyboard related animations in the iOS simulator, the software keyboard must be enabled (Cmd + K). 
 
 ## Project structure
 ```
