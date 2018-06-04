@@ -1,3 +1,5 @@
+[![travis build](https://img.shields.io/travis/MiguelGPereira/mini-onboarding.svg?style=flat-square)](https://travis-ci.org/MiguelGPereira/mini-onboarding)
+
 # MiniOnboarding
 Mini onboarding flow application, built with React-Native.
 
