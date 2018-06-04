@@ -20,9 +20,12 @@ class Landing extends Component {
     constructor(props) {
         super(props);
 
+        // navigator events bind
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
 
+        // delta: total duration of the animations
         this.delta = 1000;
+        // animated values
         this.logoFinalPosition = Dimensions.get("window").height / 2 - 60;
         this.contentTranslate = new Animated.Value(40);
         this.contentOpacity = new Animated.Value(0);
@@ -81,6 +84,8 @@ class Landing extends Component {
     }
 
     render() {
+        // create a Goal item for each fitness goal  
+        // in the fitnessGoals constants
         const renderedItems = Object.keys(fitnessGoals).map(goal =>
             <Goal
                 key={goal}

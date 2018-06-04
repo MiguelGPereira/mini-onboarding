@@ -23,8 +23,10 @@ class Height extends Component {
     constructor(props) {
         super(props);
 
+        // navigator events bind
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
 
+        // intial state
         this.state = {
             heightCmsInput: undefined,
             heightFtInput: undefined,
@@ -36,6 +38,9 @@ class Height extends Component {
 
     onNavigatorEvent = (event) => {
         if (event.id === "didAppear") {
+            // set custom back buttom
+            // (here instead of constructor to prevent flickr
+            // on existing arrow)
             this.props.navigator.setButtons({
                 leftButtons: [{
                     id: "back",
@@ -47,6 +52,7 @@ class Height extends Component {
                 animated: false
             });
 
+            // set correct initial focus on input
             if (this.state.system === measureSys.IMPERIAL) {
                 this.ftInput.focus();
             } else {
@@ -65,6 +71,7 @@ class Height extends Component {
 
         const height = { system };
 
+        // storing height always in metric system
         if (system === measureSys.METRIC) {
             height.value = heightCmsInput;
         } else {
@@ -112,6 +119,7 @@ class Height extends Component {
         }
     }
 
+    // update the state with a valid input
     _updateState = (key, value) => {
         this.setState(
             { [key]: value },
@@ -119,6 +127,8 @@ class Height extends Component {
         );
     }
 
+    // see if the state (metric or imperial inputs)
+    // is valid to continue
     _validateState = () => {
         const { heightCmsInput, heightFtInput, heightInInput, system } = this.state;
         const validMetric =
@@ -155,6 +165,7 @@ class Height extends Component {
     }
 
     render() {
+        // render inputs according to measurement system
         let heightInput;
         if (this.state.system === measureSys.METRIC) {
             heightInput = (

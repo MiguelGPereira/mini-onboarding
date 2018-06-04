@@ -20,8 +20,10 @@ class Age extends Component {
     constructor(props) {
         super(props);
 
+        // navigator events bind
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
 
+        // set custom back buttom
         this.props.navigator.setButtons({
             leftButtons: [{
                 id: "back",
@@ -32,6 +34,7 @@ class Age extends Component {
             }]
         });
 
+        // intial state
         this.state = {
             ageInput: undefined,
             isValid: false

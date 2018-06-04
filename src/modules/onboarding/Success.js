@@ -16,11 +16,15 @@ class Success extends Component {
     constructor(props) {
         super(props);
 
+        // navigator events bind
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
     }
 
     onNavigatorEvent = (event) => {
         if (event.id === "didAppear") {
+            // set custom back buttom
+            // (here instead of constructor to prevent flickr
+            // on existing arrow)
             this.props.navigator.setButtons({
                 leftButtons: [{
                     id: "back",

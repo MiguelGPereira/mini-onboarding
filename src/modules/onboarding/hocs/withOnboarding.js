@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 
 import * as actions from "./../onboarding.actions";
 
-// enhance the onboarding main components with the onboarding part of the Store
+// enhance the onboarding main components with the 
+// onboarding part of the Store
 export default function withOnboarding(WrappedComponent) {
     class _anonymous_ extends Component {
         render() {
