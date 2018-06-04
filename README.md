@@ -68,7 +68,7 @@ The development of the design was based/optimized on iOS w/ 4.7-inch (e.g. iPhon
 
 One challenge was trying to reduce the compromise between respecting the design and adapting to the different screen sizes (and Android), although I believe I found a good balance. 
 
-Regarding the architecture, I tried to use a highly modular approach. Two examples are [withOnboarding](#withonboarding) and [Step](#step).
+Regarding the architecture, I tried to use a highly modular approach. Two examples are [withOnboarding](#withonboarding) and [Step](#step). I also resorted to functional stateless components when possible.
 
 ### withOnboarding
 This higher-order component was created to inject the Redux's store State and the Dispatch into the onboarding component's props. 
