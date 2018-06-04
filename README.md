@@ -7,7 +7,7 @@ Mini onboarding flow application, built with React-Native.
 ```bash
 yarn install
 ```
-This project was created using the React Native CLI, which means that to run in from the console, the CLI must be installed
+This project was created using the React Native CLI, which means that to run from the console, the CLI must be installed
 ```npm
 npm install -g react-native-cli
 ```
