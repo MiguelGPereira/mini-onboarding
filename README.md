@@ -73,7 +73,7 @@ From a software design perspective, instead of using 'withOnboarding', I could h
 
 ### Step
 This component was created because of the similarities of the intermediate (post-landing) onboarding steps. All those screens have a ProgressBar, a title, an **input-section**, and a submit button, with possible keyboard events.
-Step uses composition to abstract all the repeated JSX created by these dependencies, allowing the intermediate onboarding steps to only deal with the **input-section**.
+Step uses composition to abstract all these repeated dependencies, allowing the intermediate onboarding steps to only deal with the **input-section**.
 
 ## Limitations
 The keyboard associated animations were designed with iOS first in mind. On adaptation for Android, there is a known bug that doesn't allow disabling the keyboard default accessory transitions without disabling it's triggered events (see [here](https://github.com/facebook/react-native/issues/2852)). For this reason, the keyboard associated animations are a bit *hacked* on Android and could be improved with some refactoring.
