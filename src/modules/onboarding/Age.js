@@ -39,7 +39,7 @@ class Age extends Component {
     }
 
     onNavigatorEvent(event) {
-        event.id == 'didAppear' && this.input.focus();
+        event.id === 'didAppear' && this.input.focus();
     }
 
     _didTapNext() {

@@ -33,7 +33,7 @@ class Landing extends Component {
     }
 
     onNavigatorEvent(event) {
-        if(event.id == 'didAppear') {
+        if(event.id === 'didAppear') {
             Animated.parallel([
                 Animated.timing(this.logoScale, {
                     duration: this.delta * (2/3),

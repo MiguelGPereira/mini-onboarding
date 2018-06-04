@@ -35,7 +35,7 @@ class Height extends Component {
     }
 
     onNavigatorEvent(event) {
-        if (event.id == 'didAppear') {
+        if (event.id === 'didAppear') {
             this.props.navigator.setButtons({
                 leftButtons: [{
                     id: 'back',
@@ -47,7 +47,7 @@ class Height extends Component {
                 animated: false
             });
 
-            if (this.state.system == measureSys.IMPERIAL) {
+            if (this.state.system === measureSys.IMPERIAL) {
                 this.ftInput.focus();
             } else {
                 this.cmInput.focus();
@@ -65,7 +65,7 @@ class Height extends Component {
 
         const height = { system };
 
-        if (system == measureSys.METRIC) {
+        if (system === measureSys.METRIC) {
             height.value = heightCmsInput;
         } else {
             height.value = toMetric(
@@ -122,11 +122,11 @@ class Height extends Component {
     _validateState() {
         const { heightCmsInput, heightFtInput, heightInInput, system } = this.state;
         const validMetric =
-            system == measureSys.METRIC
+            system === measureSys.METRIC
             && heightCmsInput != undefined;
 
         const validImperial =
-            system == measureSys.IMPERIAL
+            system === measureSys.IMPERIAL
             && heightFtInput != undefined
             && heightInInput != undefined
             && isValidImperialHeight(heightFtInput, heightInInput);
@@ -156,7 +156,7 @@ class Height extends Component {
 
     render() {
         let heightInput;
-        if (this.state.system == measureSys.METRIC) {
+        if (this.state.system === measureSys.METRIC) {
             heightInput = (
                 <View style={styles.inputSection}>
                     <View>

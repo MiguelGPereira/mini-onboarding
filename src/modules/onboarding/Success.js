@@ -20,7 +20,7 @@ class Success extends Component {
     }
 
     onNavigatorEvent(event) {
-        if (event.id == 'didAppear') {
+        if (event.id === 'didAppear') {
             this.props.navigator.setButtons({
                 leftButtons: [{
                     id: 'back',

@@ -35,7 +35,7 @@ class Pill extends Component {
 
         let leftPill;
         let rightPill;
-        if (this.state.active == left) {
+        if (this.state.active === left) {
             leftPill = (
                 <View style={[styles.partial, styles.left, styles.activeBackground]}>
                     <Text style={[styles.text, styles.activeText]}>{left}</Text>

@@ -22,7 +22,7 @@ export function toTitleAllCapitalFormat(str) {
 }
 
 export function toMeasureDisplayFormat({value, system}) {
-    if(system == measureSys.METRIC) {
+    if(system === measureSys.METRIC) {
         return `${value}cm`;
     } else {
         const imperial = toImperial(value);
