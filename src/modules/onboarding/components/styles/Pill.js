@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     left: {
         borderTopLeftRadius: 15,
         borderBottomLeftRadius: 15,
-    }, 
+    },
     right: {
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,

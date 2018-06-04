@@ -20,7 +20,7 @@ class Age extends Component {
     constructor(props) {
         super(props);
 
-        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
 
         this.props.navigator.setButtons({
             leftButtons: [{
@@ -38,11 +38,11 @@ class Age extends Component {
         }
     }
 
-    onNavigatorEvent(event) {
+    onNavigatorEvent = (event) => {
         event.id === "didAppear" && this.input.focus();
     }
 
-    _didTapNext() {
+    _didTapNext = () => {
         this.props.actions.setAge(this.state.ageInput);
         this.props.navigator.push({
             screen: "onboarding.Height",
@@ -50,7 +50,7 @@ class Age extends Component {
         });
     }
 
-    _validateInput(ageInput) {
+    _validateInput = (ageInput) => {
         if (isValidAge(ageInput)) {
             this.setState({
                 ageInput: ageInput,
@@ -67,7 +67,7 @@ class Age extends Component {
                 title="How old are you?"
                 progress={2 / 3}
                 isValid={this.state.isValid}
-                onContinue={this._didTapNext.bind(this)}
+                onContinue={this._didTapNext}
             >
                 <View>
                     <TextInput

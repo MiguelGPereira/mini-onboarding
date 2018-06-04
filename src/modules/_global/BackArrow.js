@@ -12,7 +12,6 @@ class BackArrow extends Component {
             <TouchableOpacity onPress={() => onPress()}>
                 <Image source={require("./img/icArrowLeft.png")} />
             </TouchableOpacity>
-
         );
     }
 }

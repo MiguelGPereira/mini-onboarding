@@ -19,18 +19,17 @@ class Pill extends Component {
         }
     }
 
-    _didTapLeft(action) {
+    _didTapLeft = (action) => {
         action();
         this.setState({ active: this.state.left });
     }
 
-    _didTapRight(action) {
+    _didTapRight = (action) => {
         action();
         this.setState({ active: this.state.right });
     }
 
     render() {
-
         const { left, right, onLeftPress, onRightPress } = this.props;
 
         let leftPill;
@@ -73,9 +72,9 @@ class Pill extends Component {
 }
 
 Pill.propTypes = {
-    left: PropTypes.string.isRequired, 
-    right: PropTypes.string.isRequired, 
-    onLeftPress: PropTypes.func.isRequired, 
+    left: PropTypes.string.isRequired,
+    right: PropTypes.string.isRequired,
+    onLeftPress: PropTypes.func.isRequired,
     onRightPress: PropTypes.func.isRequired,
 }
 

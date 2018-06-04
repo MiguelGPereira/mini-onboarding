@@ -5,13 +5,13 @@ const M_C = {
     c: 2.54
 };
 
-export function toMetric(feet, inches) {
+export const toMetric = (feet, inches) => {
     const totalInches = (feet * M_C.b) + inches;
     const centimeters = totalInches * M_C.c;
     return Math.round(centimeters * 100) / 100;
 }
 
-export function toImperial(centimeters) {
+export const toImperial = (centimeters) => {
     const totalInches = centimeters * M_C.a;
     const totalFeet = totalInches / M_C.b;
     const feet = Math.floor(totalFeet);

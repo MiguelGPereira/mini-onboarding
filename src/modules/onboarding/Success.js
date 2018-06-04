@@ -16,10 +16,10 @@ class Success extends Component {
     constructor(props) {
         super(props);
 
-        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
     }
 
-    onNavigatorEvent(event) {
+    onNavigatorEvent = (event) => {
         if (event.id === "didAppear") {
             this.props.navigator.setButtons({
                 leftButtons: [{

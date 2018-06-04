@@ -5,6 +5,7 @@ import {
     Keyboard,
     Animated,
     Dimensions,
+    Platform,
 } from "react-native";
 import PropTypes from "prop-types";
 
@@ -17,14 +18,13 @@ class Step extends Component {
     constructor(props) {
         super(props);
 
-        this._androidHelperIsTransitioning = false;
         this.buttonViewTranslateY = new Animated.Value(0);
     }
 
     componentWillMount() {
-        this.keyboardWillShowSub = Keyboard.addListener("keyboardWillShow", this.keyboardWillShow.bind(this));
-        this.keyboardDidShowSub = Keyboard.addListener("keyboardDidShow", this.keyboardDidShow.bind(this));
-        this.keyboardDidHideSub = Keyboard.addListener("keyboardDidHide", this.keyboardDidHide.bind(this));
+        this.keyboardWillShowSub = Keyboard.addListener("keyboardWillShow", this.keyboardWillShow);
+        this.keyboardDidShowSub = Keyboard.addListener("keyboardDidShow", this.keyboardDidShow);
+        this.keyboardDidHideSub = Keyboard.addListener("keyboardDidHide", this.keyboardDidHide);
     }
 
     componentWillUnmount() {
@@ -33,7 +33,7 @@ class Step extends Component {
         this.keyboardDidHideSub.remove();
     }
 
-    keyboardWillShow(event) {
+    keyboardWillShow = (event) => {
         Animated.timing(this.buttonViewTranslateY, {
             duration: event.duration,
             toValue: -event.endCoordinates.height,
@@ -41,13 +41,13 @@ class Step extends Component {
         }).start();
     }
 
-    keyboardDidShow(event) {
-        if(this.buttonViewTranslateY._value != 0) return;
-        this.submitView._component.measure( (fx, fy, width, height, px, py) => {
+    keyboardDidShow = (event) => {
+        if (this.buttonViewTranslateY._value != 0) return;
+        this.submitView._component.measure((fx, fy, width, height, px, py) => {
             const offsetY = py;
             const keyboardH = event.endCoordinates.height;
-        
-            if(offsetY > keyboardH) return;
+
+            if (offsetY > keyboardH) return;
 
             Animated.timing(this.buttonViewTranslateY, {
                 duration: 300,
@@ -57,8 +57,8 @@ class Step extends Component {
         })
     }
 
-    keyboardDidHide(event) {
-        this.buttonViewTranslateY.setValue(0);
+    keyboardDidHide = (event) => {
+        Platform.OS === "android" && this.buttonViewTranslateY.setValue(0);
     }
 
     render() {
@@ -89,7 +89,7 @@ class Step extends Component {
                     <Text style={_global.title}>
                         {title}
                     </Text>
-                    { this.props.children }
+                    {this.props.children}
                 </View>
                 <Animated.View ref={ref => this.submitView = ref} style={[styles.buttonView, {
                     transform: [
@@ -104,10 +104,10 @@ class Step extends Component {
 }
 
 Step.propTypes = {
-    title: PropTypes.string.isRequired, 
-    progress: PropTypes.number.isRequired, 
-    isValid: PropTypes.bool.isRequired, 
-    onContinue: PropTypes.func.isRequired, 
+    title: PropTypes.string.isRequired,
+    progress: PropTypes.number.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    onContinue: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
 }
 

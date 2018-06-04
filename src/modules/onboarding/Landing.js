@@ -20,7 +20,7 @@ class Landing extends Component {
     constructor(props) {
         super(props);
 
-        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
 
         this.delta = 1000;
         this.logoFinalPosition = Dimensions.get("window").height / 2 - 60;
@@ -32,40 +32,40 @@ class Landing extends Component {
         this.logoScale = new Animated.Value(2);
     }
 
-    onNavigatorEvent(event) {
-        if(event.id === "didAppear") {
+    onNavigatorEvent = (event) => {
+        if (event.id === "didAppear") {
             Animated.parallel([
                 Animated.timing(this.logoScale, {
-                    duration: this.delta * (2/3),
+                    duration: this.delta * (2 / 3),
                     toValue: 1,
                     useNativeDriver: true
                 }),
                 Animated.timing(this.logoTranslate, {
-                    duration: this.delta * (2/3),
+                    duration: this.delta * (2 / 3),
                     toValue: -this.logoFinalPosition,
                     useNativeDriver: true
                 }),
                 Animated.timing(this.leftBgTranslate, {
-                    delay: this.delta * (1/3),
-                    duration: this.delta * (1/3),
+                    delay: this.delta * (1 / 3),
+                    duration: this.delta * (1 / 3),
                     toValue: 0,
                     useNativeDriver: true
                 }),
                 Animated.timing(this.rightBgTranslate, {
-                    delay: this.delta * (1/3),
-                    duration: this.delta * (1/3),
+                    delay: this.delta * (1 / 3),
+                    duration: this.delta * (1 / 3),
                     toValue: 0,
                     useNativeDriver: true
                 }),
                 Animated.timing(this.contentOpacity, {
-                    delay: this.delta * (1/2),
-                    duration: this.delta * (1/2),
+                    delay: this.delta * (1 / 2),
+                    duration: this.delta * (1 / 2),
                     toValue: 1,
                     useNativeDriver: true
                 }),
                 Animated.timing(this.contentTranslate, {
-                    delay: this.delta * (1/2),
-                    duration: this.delta * (1/2),
+                    delay: this.delta * (1 / 2),
+                    duration: this.delta * (1 / 2),
                     toValue: 0,
                     useNativeDriver: true
                 })
@@ -73,7 +73,7 @@ class Landing extends Component {
         }
     }
 
-    _didTapGoal(goal) {
+    _didTapGoal = (goal) => {
         this.props.actions.setGoal(goal);
         this.props.navigator.push({
             screen: "onboarding.Age",

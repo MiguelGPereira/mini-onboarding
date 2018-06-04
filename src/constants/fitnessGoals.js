@@ -4,7 +4,6 @@ export const LOSE_WEIGHT = {
 export const GET_FITTER = {
     description: "Tone up & feel healthy"
 };
-
 export const GAIN_MUSCLE = {
     description: "Build mass & strength"
 };

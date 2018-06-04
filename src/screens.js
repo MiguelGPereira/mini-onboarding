@@ -7,13 +7,13 @@ import Success from "./modules/onboarding/Success";
 
 import BackArrow from "./modules/_global/BackArrow";
 
-export function registerScreens(store, Provider) {
-  /* screens */
+export const registerScreens = (store, Provider) => {
+  // screens
   Navigation.registerComponent("onboarding.Landing", () => Landing, store, Provider);
   Navigation.registerComponent("onboarding.Age", () => Age, store, Provider);
   Navigation.registerComponent("onboarding.Height", () => Height, store, Provider);
   Navigation.registerComponent("onboarding.Success", () => Success, store, Provider);
 
-  /* components */
+  // components
   Navigation.registerComponent("_global.BackArrow", () => BackArrow, store, Provider);
 }

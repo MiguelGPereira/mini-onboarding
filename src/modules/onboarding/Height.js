@@ -23,7 +23,7 @@ class Height extends Component {
     constructor(props) {
         super(props);
 
-        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
 
         this.state = {
             heightCmsInput: undefined,
@@ -34,7 +34,7 @@ class Height extends Component {
         }
     }
 
-    onNavigatorEvent(event) {
+    onNavigatorEvent = (event) => {
         if (event.id === "didAppear") {
             this.props.navigator.setButtons({
                 leftButtons: [{
@@ -55,7 +55,7 @@ class Height extends Component {
         }
     }
 
-    _didTapNext() {
+    _didTapNext = () => {
         const {
             heightCmsInput,
             heightFtInput,
@@ -89,7 +89,7 @@ class Height extends Component {
         });
     }
 
-    _validateInput(heightInput, measure) {
+    _validateInput = (heightInput, measure) => {
         let validHeight;
         switch (measure) {
             case "cms":
@@ -112,14 +112,14 @@ class Height extends Component {
         }
     }
 
-    _updateState(key, value) {
+    _updateState = (key, value) => {
         this.setState(
             { [key]: value },
             () => this.setState({ isValid: this._validateState() })
         );
     }
 
-    _validateState() {
+    _validateState = () => {
         const { heightCmsInput, heightFtInput, heightInInput, system } = this.state;
         const validMetric =
             system === measureSys.METRIC
@@ -134,7 +134,7 @@ class Height extends Component {
         return validMetric || validImperial;
     }
 
-    _didTapMetric() {
+    _didTapMetric = () => {
         this.setState({
             heightCmsInput: null,
             heightFtInput: null,
@@ -144,7 +144,7 @@ class Height extends Component {
         }, () => this.cmInput.focus());
     }
 
-    _didTapImperial() {
+    _didTapImperial = () => {
         this.setState({
             heightCmsInput: null,
             heightFtInput: null,
@@ -210,7 +210,7 @@ class Height extends Component {
                 title="How tall are you?"
                 progress={3 / 3}
                 isValid={this.state.isValid}
-                onContinue={this._didTapNext.bind(this)}
+                onContinue={this._didTapNext}
             >
                 <View style={styles.container}>
                     {heightInput}
@@ -218,8 +218,8 @@ class Height extends Component {
                         left="FT"
                         right="CM"
                         init="FT"
-                        onLeftPress={() => this._didTapImperial()}
-                        onRightPress={() => this._didTapMetric()}
+                        onLeftPress={this._didTapImperial}
+                        onRightPress={this._didTapMetric}
                     />
                 </View>
             </Step>
